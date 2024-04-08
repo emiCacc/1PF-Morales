@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { IUser } from '../../models';
 
 @Component({
   selector: 'app-user-dialog',
@@ -11,12 +12,19 @@ export class UserDialogComponent {
   userForm: FormGroup;
 
 constructor(private formBuilder: FormBuilder,
-            private matDialogRef: MatDialogRef<UserDialogComponent>){
+            private matDialogRef: MatDialogRef<UserDialogComponent>,
+            @Inject(MAT_DIALOG_DATA) private editingUser?: IUser){
+  //console.log(editingUser);              
   this.userForm = this.formBuilder.group({
     firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
     lastName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
     email: ['', [Validators.required, Validators.pattern('[a-zA-Z-9._%+-]+@[a-zA-Z-9._%+-]+.[a-zA-Z]{2,}')]],
-  })
+    role: ['USER',[Validators.required]]
+  });
+
+  if (editingUser){
+    this.userForm.patchValue(editingUser); // El patchValue lo que hace es pisar el valor del form con el que le indiquemos.
+  }
 }
 
 onSave(): void{
