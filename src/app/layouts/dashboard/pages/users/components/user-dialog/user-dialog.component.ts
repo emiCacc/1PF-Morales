@@ -16,7 +16,7 @@ constructor(private formBuilder: FormBuilder,
             @Inject(MAT_DIALOG_DATA) private editingUser?: IUser){
   //console.log(editingUser);              
   this.userForm = this.formBuilder.group({
-    firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
+    firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'), Validators.maxLength(5)]],
     lastName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
     email: ['', [Validators.required, Validators.pattern('[a-zA-Z-9._%+-]+@[a-zA-Z-9._%+-]+.[a-zA-Z]{2,}')]],
     role: ['USER',[Validators.required]]
@@ -25,6 +25,14 @@ constructor(private formBuilder: FormBuilder,
   if (editingUser){
     this.userForm.patchValue(editingUser); // El patchValue lo que hace es pisar el valor del form con el que le indiquemos.
   }
+}
+
+get firstNameControl() {
+  return this.userForm.get('firstName');
+}
+
+get lastNameControl() {
+  return this.userForm.get('lastName');
 }
 
 onSave(): void{

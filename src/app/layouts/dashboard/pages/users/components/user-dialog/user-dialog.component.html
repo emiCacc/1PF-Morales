@@ -3,30 +3,34 @@
     <form [formGroup]="userForm">
         <div class="row">
             <div class="col-6">
-                <mat-form-field class="w-100" appearance="fill">
+                <mat-form-field class="w-100 p-3" appearance="fill">
                     <mat-label>Nombre</mat-label>
                     <input formControlName="firstName" matInput />
                     <mat-hint>El nombre debe tener al menos 6 caracteres</mat-hint>
+                    <mat-error>{{ firstNameControl?.errors | formFieldValidationErrors }}</mat-error>
                 </mat-form-field>
             </div>
 
             <div class="col-6">
-                <mat-form-field class="w-100" appearance="fill">
+                <mat-form-field class="w-100 p-3" appearance="fill">
                     <mat-label>Apellido</mat-label>
                     <input formControlName="lastName" matInput />
                     <mat-hint>El apellido debe tener al menos 6 caracteres</mat-hint>
+                    <mat-error>{{ lastNameControl?.errors | formFieldValidationErrors }}</mat-error>
                 </mat-form-field>
             </div> 
 
             <div class="col-8">
-                <mat-form-field class="w-100" appearance="fill">
+                <mat-form-field class="w-100 p-3" appearance="fill">
                     <mat-label>Email</mat-label>
                     <input formControlName="email" matInput />
-                    <mat-hint>Ingresa un correo válido</mat-hint>
+                    <mat-error>{{
+                        userForm.get("email")?.errors | formFieldValidationErrors
+                      }}</mat-error>
                 </mat-form-field>
             </div> 
             <div class="col-4">
-                <mat-form-field class="w-100" appearance="fill">
+                <mat-form-field class="w-100 p-3" appearance="fill">
                     <mat-label>Rol</mat-label>
                     <mat-select formControlName="role">
                         <mat-option value="ADMIN">Admin</mat-option>
