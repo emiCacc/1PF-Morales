@@ -31,13 +31,18 @@ export class UsersComponent {
       .subscribe({
         next: (result) => {
           if(result){
-            //AL CERRAR EL MODAL:
-            result.id = new Date().getTime().toString().substring(0,2);
-            result.createdAt = new Date();
-            //this.users.push(result); //NO funciona en Angular Material xq este necesita que le mande un ARRAY NUEVO, (no un usuario nuevo)
-            this.users = [...this.users, result];
+
+            if(editingUser){
+              //ACTUALIZACION DEL USUARIO EN EL ARRAY
+              this.users = this.users.map((u) => u.id === editingUser.id ? { ...u, ...result } : u);
+            } else {
+              //WHEN CIERRO EL MODAL:
+              result.id = new Date().getTime().toString().substring(0,2);
+              result.createdAt = new Date();
+              //this.users.push(result); //NO funciona en Angular Material xq este necesita que le mande un ARRAY NUEVO, (no un usuario nuevo)
+              this.users = [...this.users, result];
+            }
         }
-        //console.log(result)
       },
     });
   }
