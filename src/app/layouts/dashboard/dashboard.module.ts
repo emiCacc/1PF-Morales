@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { UsersModule } from './pages/users/users.module';
 import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
+import { ProductsModule } from './pages/products/products.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-direc
     MatIconModule,
     MatButtonModule,
     UsersModule,
-    PipesYDirectivasModule
+    PipesYDirectivasModule,
+    ProductsModule
   ],
   exports:[DashboardComponent],
 })
