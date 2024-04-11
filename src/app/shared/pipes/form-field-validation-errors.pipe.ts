@@ -17,11 +17,10 @@ export class FormFieldValidationErrorsPipe implements PipeTransform {
       for (const key in value) {
         if (Object.prototype.hasOwnProperty.call(value, key)) {
           const errorDetail = value[key];
-          console.log(key);
           if (key === 'required') messages.push('Este campo es requerido.');
           if (key === 'pattern') messages.push('No cumple con el formato requerido.');
-          if (key === 'maxlength') messages.push(`No puede tener mas de ${errorDetail.required} caracteres.`);
-          if (key === 'minlenght') messages.push(`No puede tener menos de ${errorDetail.required} caracteres.`);
+          if (key === 'maxlength') messages.push(`No puede tener mas de ${errorDetail.requiredLength} caracteres.`);
+          if (key === 'minlenght') messages.push(`No puede tener menos de ${errorDetail.requiredLength} caracteres.`);
         }
       }
       return messages.join('. ');
