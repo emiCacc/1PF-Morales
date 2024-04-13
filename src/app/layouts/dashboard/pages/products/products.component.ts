@@ -10,11 +10,11 @@ import { IProduct } from './models';
 export class ProductsComponent implements OnInit {
   displayedColumns = ['id','name','price','actions'];
 
-  products: IProduct[] = [];
+  //products: IProduct[] = [];
 
   constructor( private productService: ProductsService ) {}
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    //this.products = this.productService.getProducts();
   }
 }
