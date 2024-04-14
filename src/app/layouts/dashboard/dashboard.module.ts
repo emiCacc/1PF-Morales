@@ -7,14 +7,11 @@ import { DashboardComponent } from './dashboard.component';
 //material
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
 import { StudentsModule } from './pages/students/students.module';
 import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
 import { AsignaturesModule } from './pages/asignatures/asignatures.module';
 import { TeachersModule } from './pages/teachers/teachers.module';
-import { MatListModule } from '@angular/material/list';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,13 +22,11 @@ import { MatListModule } from '@angular/material/list';
     DashboardRoutingModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
     StudentsModule,
     PipesYDirectivasModule,
     AsignaturesModule,
     TeachersModule,
-    MatListModule
+    SharedModule
   ],
   exports:[DashboardComponent],
 })
