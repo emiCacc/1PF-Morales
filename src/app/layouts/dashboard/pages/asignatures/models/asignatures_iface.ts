@@ -1,6 +1,6 @@
 export interface IAsignatures {
     id: number;
-    materia: string;
+    asignature: string;
     tipo: string;
     approved: string;
     desapproved: string;  
