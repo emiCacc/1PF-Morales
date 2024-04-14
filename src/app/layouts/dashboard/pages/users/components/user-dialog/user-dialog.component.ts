@@ -36,9 +36,9 @@ get lastNameControl() {
 }
 
 onSave(): void{
-  if(this.userForm.invalid){ //Cuando el form es INVALIDO
+  if(this.userForm.invalid){ // Cuando el form es INVALIDO
     this.userForm.markAllAsTouched();
-  }else{ //Cuando el form es VALIDO
+  }else{ // Cuando el form es VALIDO
     this.matDialogRef.close(this.userForm.value);
   }
 }

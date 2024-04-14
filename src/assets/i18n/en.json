@@ -1,0 +1,25 @@
+{
+   
+    "alumnosGryffindor": "Alumnos Gryffindor",
+    "alumnosSlytherin": "Alumnos Slytherin",
+    "alumnosHufflepuff": "Alumnos Hufflepuff",
+    "alumnosRavenclaw": "Alumnos Ravenclaw",
+
+
+    "seleccionarMateria": "Seleccione un tipo de Materia.",
+    "materiaObligatoria": "Las materias de esta categoría son obligatorias y los alumnos deberán aprobarlas para pasar al siguiente año.",
+    "materiaOpcional": "Las materias de esta categoría son opcionales y los alumnos podrán cursarlas para obtener puntos para sus casas.",
+    "clickearMateria": "Seleccione una Materia debajo para ver las calificaciones.",
+    "pociones": "Pociones",
+    "defensa": "Defensa contra las artes oscuras",
+    "encantamientos": "Encantamientos",
+    "historia": "Historia de la Magia",
+    "quidditch": "Quidditch",
+    "criaturas": "Cuidado de Criaturas Mágicas",
+    "aritmancia": "Aritmancia",
+    "adivinacion": "Adivinacion",
+
+    "byMe": "Emi Morales",
+    "byMeSaludo": "Proyecto Final - Primera entrega"
+
+}

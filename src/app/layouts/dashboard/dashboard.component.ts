@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
   showFiller = false;
  
-//Determina si la pantalla del dispositivo es un celular (menor a 280px) o no.  
+// Determines if the screen is a smartphone screen (less than 280px). 
 isMobile(): boolean {
   return window.innerWidth <= 280;
 }
