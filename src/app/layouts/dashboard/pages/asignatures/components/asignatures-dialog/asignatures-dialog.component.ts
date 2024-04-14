@@ -17,26 +17,25 @@ constructor(private formBuilder: FormBuilder,
             @Inject(MAT_DIALOG_DATA) private editingAsignature?: IAsignatures){
             this.asignaturesForm = this.formBuilder.group({
               id: [editingAsignature?.id || ''], 
-              asignature: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'), Validators.maxLength(10)]],
-              professor: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
-              asignatureType: ['', [Validators.required, Validators.pattern('[a-zA-Z-9._%+-]+@[a-zA-Z-9._%+-]+.[a-zA-Z]{2,}')]],
+              asignature: ['', [Validators.required]],
+              professor: ['', [Validators.required]],
+              asignatureType: ['', [Validators.required]],
             }); 
       if (editingAsignature){
         this.asignaturesForm.patchValue(editingAsignature);
       }
 }
 
-
   get asignatureControl() {
-    return this.asignaturesForm.get('firstName');
+    return this.asignaturesForm.get('asignature');
   }
   
   get professorControl() {
-    return this.asignaturesForm.get('lastName');
+    return this.asignaturesForm.get('professor');
   }
   
   get asignatureTypeControl() {
-    return this.asignaturesForm.get('house');
+    return this.asignaturesForm.get('asignatureType');
   }
 
   onSave(): void{
