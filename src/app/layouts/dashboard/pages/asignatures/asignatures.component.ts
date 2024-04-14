@@ -12,7 +12,14 @@ export class AsignaturesComponent {
   displayedColumns: string[] = ['id', 'asignature', 'asignatureType', 'enrolled', 'professor', 'actions'];
 
   asignatures: IAsignatures[] = [
-    { id: 1, asignature: 'Historia de la Magia', asignatureType: 'Obligatoria', enrolled: '25', professor: 'Minerva Mc Gonagall' },
+    { id: 1, asignature: 'Historia de la Magia', asignatureType: 'Obligatoria', enrolled: '25', professor: 'Cuthbert Binns' },
+    { id: 2, asignature: 'Defensa contra las artes oscuras', asignatureType: 'Obligatoria', enrolled: '25', professor: 'Severus Snape' },
+    { id: 3, asignature: 'Encantamientos', asignatureType: 'Obligatoria', enrolled: '25', professor: 'Filius Flitwick' },
+    { id: 4, asignature: 'Quidditch', asignatureType: 'Opcional', enrolled: '25', professor: 'Rolanda Hooch' },
+    { id: 5, asignature: 'Cuidado de Criaturas Mágicas', asignatureType: 'Opcional', enrolled: '25', professor: 'Rubeus Hagrid' },
+    { id: 6, asignature: 'Estudios Avanzados Aritmancia', asignatureType: 'Opcional', enrolled: '25', professor: 'Septima Vector' },
+    { id: 7, asignature: 'Adivinacion', asignatureType: 'Obligatoria', enrolled: '25', professor: 'Sybill Trelawney' },
+    { id: 8, asignature: 'Pociones', asignatureType: 'Obligatoria', enrolled: '25', professor: 'Horace Slughorn' },
 ];
 
 constructor(private matDialog: MatDialog) {}
