@@ -1,7 +1,7 @@
 export interface IAsignatures {
     id: number;
     asignature: string;
-    tipo: string;
+    asignatureType: string;
     enrolled: string;
-    docente: string;  
-}
+    professor: string;
+  }

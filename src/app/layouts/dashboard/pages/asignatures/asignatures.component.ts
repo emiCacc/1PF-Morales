@@ -9,10 +9,10 @@ import { AsignaturesDialogComponent } from './components/asignatures-dialog/asig
   styleUrls: ['./asignatures.component.scss']
 })
 export class AsignaturesComponent {
-  displayedColumns: string[] = ['id', 'asignature', 'tipo', 'enrolled', 'docente', 'actions'];
+  displayedColumns: string[] = ['id', 'asignature', 'asignatureType', 'enrolled', 'professor', 'actions'];
 
   asignatures: IAsignatures[] = [
-    { id: 1, asignature: 'Historia de la Magia', tipo: 'Obligatoria', enrolled: '25', docente: 'Minerva Mc Gonagall' },
+    { id: 1, asignature: 'Historia de la Magia', asignatureType: 'Obligatoria', enrolled: '25', professor: 'Minerva Mc Gonagall' },
 ];
 
 constructor(private matDialog: MatDialog) {}
