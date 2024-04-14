@@ -29,22 +29,19 @@
                       }}</mat-error>
                 </mat-form-field>
             </div> 
+
             <div class="col-8">
                 <mat-form-field class="w-100 p-3" appearance="fill">
                     <mat-label>Casa</mat-label>
-                    <input formControlName="house" matInput />
+                    <mat-select formControlName="house">
+                        <mat-option value="gryffindor">Gryffindor</mat-option>
+                        <mat-option value="Slytherin">Slytherin</mat-option>
+                        <mat-option value="Ravenclaw">Ravenclaw</mat-option>
+                        <mat-option value="Hufflepuff">Hufflepuff</mat-option>
+                    </mat-select>
                     <mat-error>{{
                         userForm.get("house")?.errors | formFieldValidationErrors
                       }}</mat-error>
-                </mat-form-field>
-            </div> 
-            <div class="col-4">
-                <mat-form-field class="w-100 p-3" appearance="fill">
-                    <mat-label>Rol</mat-label>
-                    <mat-select formControlName="role">
-                        <mat-option value="ADMIN">Admin</mat-option>
-                        <mat-option value="USER">User</mat-option>
-                    </mat-select>
                 </mat-form-field>
             </div> 
         </div> 

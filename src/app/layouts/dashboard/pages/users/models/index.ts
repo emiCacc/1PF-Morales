@@ -1,4 +1,4 @@
-export interface IUser {
+export interface IStudents {
     id: number;
     firstName: string;
     lastName: string;

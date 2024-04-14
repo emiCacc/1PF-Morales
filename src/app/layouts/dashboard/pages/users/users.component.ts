@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IUser } from './models';
+import { IStudents } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 
@@ -14,7 +14,7 @@ import { UserDialogComponent } from './components/user-dialog/user-dialog.compon
 export class UsersComponent {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'house', 'createdAt', 'actions'];
 
-  users: IUser[] = [
+  students: IStudents[] = [
       { id: 1, firstName: 'Harry', lastName: 'Potter', email: 'harry_potter@gmail.com', house:'Gryffindor', createdAt: new Date() },
       { id: 2, firstName: 'Hermione', lastName: 'Granger', email: 'hermione_granger@gmail.com', house:'Gryffindor', createdAt: new Date() },
       { id: 3, firstName: 'Ron', lastName: 'Weasley', email: 'ron_wasley@gmail.com', house:'Gryffindor', createdAt: new Date() },
@@ -34,7 +34,7 @@ export class UsersComponent {
 
   constructor(private matDialog: MatDialog) {}
 
-  openDialog(editingUser?: IUser): void {
+  openDialog(editingUser?: IStudents): void {
     this.matDialog
       .open(UserDialogComponent,{
         data: editingUser,
@@ -46,13 +46,13 @@ export class UsersComponent {
 
             if(editingUser){
               //ACTUALIZACION DEL USUARIO EN EL ARRAY
-              this.users = this.users.map((u) => u.id === editingUser.id ? { ...u, ...result } : u);
+              this.students = this.students.map((u) => u.id === editingUser.id ? { ...u, ...result } : u);
             } else {
               //WHEN CIERRO EL MODAL:
               result.id = new Date().getTime().toString().substring(0,2);
               result.createdAt = new Date();
               //this.users.push(result); //NO funciona en Angular Material xq este necesita que le mande un ARRAY NUEVO, (no un usuario nuevo)
-              this.users = [...this.users, result];
+              this.students = [...this.students, result];
             }
         }
       },
@@ -61,7 +61,7 @@ export class UsersComponent {
     
   onDeleteUser(id: number): void {
     if (confirm('Esta seguro?'))
-    this.users = this.users.filter((u) => u.id != id);
+    this.students = this.students.filter((u) => u.id != id);
   }
 
   onEditUser(id: number): void {

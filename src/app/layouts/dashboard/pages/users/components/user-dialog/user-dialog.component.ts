@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IUser } from '../../models';
+import { IStudents } from '../../models';
 
 @Component({
   selector: 'app-user-dialog',
@@ -13,7 +13,7 @@ export class UserDialogComponent {
 
 constructor(private formBuilder: FormBuilder,
             private matDialogRef: MatDialogRef<UserDialogComponent>,
-            @Inject(MAT_DIALOG_DATA) private editingUser?: IUser){
+            @Inject(MAT_DIALOG_DATA) private editingUser?: IStudents){
   //console.log(editingUser);              
   this.userForm = this.formBuilder.group({
     firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'), Validators.maxLength(5)]],
@@ -33,6 +33,10 @@ get firstNameControl() {
 
 get lastNameControl() {
   return this.userForm.get('lastName');
+}
+
+get houseControl() {
+  return this.userForm.get('house');
 }
 
 onSave(): void{
