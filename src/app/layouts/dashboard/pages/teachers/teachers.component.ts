@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ITeachers } from './models/teachers_iface';
 import { MatDialog } from '@angular/material/dialog';
+import { TeachersDialogComponent } from './components/teachers-dialog/teachers-dialog.component';
 
 @Component({
   selector: 'app-teachers',
@@ -8,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./teachers.component.scss']
 })
 export class TeachersComponent {
-  displayedColumns: string[] = ['id', 'name', 'lastName', 'age'];
+  displayedColumns: string[] = ['id', 'name', 'lastName', 'age', 'actions'];
 
   teachers: ITeachers[] = [ 
     { id: 1, name: 'Cuthbert', lastName: 'Binns', age:'75 años'},
@@ -23,4 +24,30 @@ export class TeachersComponent {
 
 constructor(private matDialog: MatDialog) {}
 
+openDialog(editingTeacher?: ITeachers): void {
+  this.matDialog
+    .open(TeachersDialogComponent,{
+      data: editingTeacher,
+    })
+    .afterClosed()
+    .subscribe({
+      next: (result) => {
+        if(result){
+
+          if(editingTeacher){
+            this.teachers = this.teachers.map((u) => u.id === editingTeacher.id ? { ...u, ...result } : u);
+          } else {
+            result.id = new Date().getTime().toString().substring(0,2);
+            this.teachers = [...this.teachers, result];
+          }
+      }
+    },
+  });
+}
+
+  onDeleteTeacher(id: number): void {
+    if (confirm('Esta seguro?')){
+      this.teachers = this.teachers.filter((u) => u.id != id);
+    }
+  }
 }
