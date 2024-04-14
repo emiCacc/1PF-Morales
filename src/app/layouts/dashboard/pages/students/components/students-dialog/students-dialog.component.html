@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>Crear usuario</h1>
+<h1 mat-dialog-title>Inscribir alumno</h1>
 <div mat-dialog-content> 
-    <form [formGroup]="userForm">
+    <form [formGroup]="studentsForm">
         <div class="row">
             <div class="col-6">
                 <mat-form-field class="w-100 p-3" appearance="fill">
@@ -25,7 +25,7 @@
                     <mat-label>Email</mat-label>
                     <input formControlName="email" matInput />
                     <mat-error>{{
-                        userForm.get("email")?.errors | formFieldValidationErrors
+                        studentsForm.get("email")?.errors | formFieldValidationErrors
                       }}</mat-error>
                 </mat-form-field>
             </div> 
@@ -40,7 +40,7 @@
                         <mat-option value="Hufflepuff">Hufflepuff</mat-option>
                     </mat-select>
                     <mat-error>{{
-                        userForm.get("house")?.errors | formFieldValidationErrors
+                        studentsForm.get("house")?.errors | formFieldValidationErrors
                       }}</mat-error>
                 </mat-form-field>
             </div> 

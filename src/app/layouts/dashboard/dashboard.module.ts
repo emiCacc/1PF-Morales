@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { StudentsModule } from './pages/students/students.module';
 import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
 import { ProductsModule } from './pages/products/products.module';
+import { AsignaturesModule } from './pages/asignatures/asignatures.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ProductsModule } from './pages/products/products.module';
     MatButtonModule,
     StudentsModule,
     PipesYDirectivasModule,
-    ProductsModule
+    ProductsModule,
+    AsignaturesModule
   ],
   exports:[DashboardComponent],
 })

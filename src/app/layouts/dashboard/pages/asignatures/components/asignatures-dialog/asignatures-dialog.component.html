@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Agregar materia</h1>
+<div mat-dialog-content> 
+    <form [formGroup]="asignaturesForm">
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="w-100 p-3" appearance="fill">
+                    <mat-label>Materia</mat-label>
+                    <input formControlName="asignature" matInput />
+                    <mat-hint>El nombre debe tener al menos 6 caracteres</mat-hint>
+                    <mat-error>{{ asignatureControl?.errors | formFieldValidationErrors }}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6">
+                <mat-form-field class="w-100 p-3" appearance="fill">
+                    <mat-label>Docente</mat-label>
+                    <input formControlName="professor" matInput />
+                    <mat-hint>El apellido debe tener al menos 6 caracteres</mat-hint>
+                    <mat-error>{{ professorControl?.errors | formFieldValidationErrors }}</mat-error>
+                </mat-form-field>
+            </div> 
+
+            <div class="col-8">
+                <mat-form-field class="w-100 p-3" appearance="fill">
+                    <mat-label>Tipo</mat-label>
+                    <mat-select formControlName="asignatureType">
+                        <mat-option value="obligatory">Obligatoria</mat-option>
+                        <mat-option value="optional">Opcional</mat-option>
+                    </mat-select>
+                    <!-- <mat-error>{{
+                        asignatureTypeControl.get("asignatureType")?.errors | formFieldValidationErrors
+                      }}</mat-error> -->
+                </mat-form-field>
+            </div> 
+        </div> 
+    </form>
+</div>
+
+<div class="d-flex justify-content-end" mat-dialog-actions>
+    <button mat-dialog-close mat-button>Cancelar</button>
+    <button (click)="onSave()" mat-button>Guardar</button>
+</div>

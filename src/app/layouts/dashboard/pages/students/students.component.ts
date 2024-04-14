@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IStudents } from './models';
+import { IStudents } from './models/students_iface';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 
@@ -56,13 +56,9 @@ export class StudentsComponent {
     });
   }
     
-  onDeleteUser(id: number): void {
+  onDeleteStudent(id: number): void {
     if (confirm('Esta seguro?'))
     this.students = this.students.filter((u) => u.id != id);
-  }
-
-  onEditUser(id: number): void {
-
   }
   
   
