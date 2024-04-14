@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-errors.pipe';
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import { RepetirDirective } from './directives/repetir.directive';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -35,7 +36,8 @@ import { RepetirDirective } from './directives/repetir.directive';
     MatIconModule,
     FormFieldValidationErrorsPipe,
     ResaltadoDirective,
-    RepetirDirective  
+    RepetirDirective,
+    MatListModule  
   ]
 })
 export class SharedModule { }

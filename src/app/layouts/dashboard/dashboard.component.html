@@ -1,39 +1,33 @@
 <mat-drawer-container class="example-container" autosize>
     <!-- SIDEBAR -->
-    <mat-drawer  
-        #drawer 
-        [opened]="false" 
-        class="example-sidenav" 
-        [mode]="isMobile() ? 'over' : 'side'"
-    >
-      <p>Auto-resizing sidenav</p>
-      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
-      </button>
+    <mat-drawer #drawer [opened]="false" class="example-sidenav" [mode]="isMobile() ? 'over' : 'side'">
+        <mat-list>
+            <a mat-list-item (click)="selectComponent('students')">
+              <mat-icon matListIcon>school</mat-icon> Alumnos
+            </a>
+            <a mat-list-item (click)="selectComponent('asignatures')">
+              <mat-icon matListIcon>book</mat-icon> Materias
+            </a>
+            <a mat-list-item (click)="selectComponent('teachers')">
+              <mat-icon matListIcon>person</mat-icon> Profesores
+            </a>
+          </mat-list>
     </mat-drawer>
-  <!-- CONTENIDO A LA DERECHA DEL SIDEBAR -->
-    <div class="example-sidenav-content">
-        <!-- TOOLBAR -->
-        <mat-toolbar color="primary">
-            <!-- Boton del toggle Sidebar -->
-            <button 
-                (click)="drawer.toggle()"
-                mat-icon-button 
-                class="example-icon" 
-                aria-label="Example icon-button with menu icon"
-            >
-                <mat-icon>menu</mat-icon>
-            </button>
-            <span>My Application</span>
-        </mat-toolbar>
-        <main style="padding: 1rem">
-            <!-- <app-students />   -->
-            <!-- <app-pipes-y-directivas /> -->
-            <!-- <app-asignatures /> -->
-            <app-teachers />
-        </main>
-    </div>  
-
-    </mat-drawer-container>
   
+    <!-- CONTENIDO A LA DERECHA DEL SIDEBAR -->
+    <div class="example-sidenav-content">
+      <!-- TOOLBAR -->
+      <mat-toolbar color="primary">
+        <!-- Boton del toggle Sidebar -->
+        <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Colegio Hogwarts de Magia y Hechiceria</span>
+      </mat-toolbar>
+      <main style="padding: 1rem">
+        <app-students *ngIf="selectedComponent === 'students'" />
+        <app-asignatures *ngIf="selectedComponent === 'asignatures'" />
+        <app-teachers *ngIf="selectedComponent === 'teachers'" />
+      </main>
+    </div>
+  </mat-drawer-container>

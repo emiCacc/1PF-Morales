@@ -13,6 +13,7 @@ import { StudentsModule } from './pages/students/students.module';
 import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
 import { AsignaturesModule } from './pages/asignatures/asignatures.module';
 import { TeachersModule } from './pages/teachers/teachers.module';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { TeachersModule } from './pages/teachers/teachers.module';
     StudentsModule,
     PipesYDirectivasModule,
     AsignaturesModule,
-    TeachersModule
+    TeachersModule,
+    MatListModule
   ],
   exports:[DashboardComponent],
 })

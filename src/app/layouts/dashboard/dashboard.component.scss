@@ -12,3 +12,14 @@
     padding: 20px;
   }
   
+  mat-list {
+  .mat-list-item {
+    height: 48px; 
+    
+    .mat-list-icon {
+      margin-top: 18px; 
+      font-size: 20px; 
+      //margin-right: 8px; 
+    }
+  }
+}
