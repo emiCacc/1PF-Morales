@@ -11,7 +11,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
   declarations: [
     PipesYDirectivasComponent,
     MyCustomTextTransformPipe,
-    MyCustomTextTransformPipe
   ],
   imports: [
     CommonModule,

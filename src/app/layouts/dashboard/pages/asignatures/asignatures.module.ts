@@ -18,7 +18,8 @@ import { PipesYDirectivasComponent } from '../pipes-y-directivas/pipes-y-directi
   imports: [
     CommonModule,
     AsignaturesRoutingModule,
-    SharedModule
+    SharedModule,
+    PipesYDirectivasModule
   ],
   exports: [
     AsignaturesComponent
