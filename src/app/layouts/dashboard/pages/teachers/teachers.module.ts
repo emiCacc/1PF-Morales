@@ -14,7 +14,7 @@ import { TeachersDialogComponent } from './components/teachers-dialog/teachers-d
   imports: [
     CommonModule,
     TeachersRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   exports:[
     TeachersComponent
