@@ -19,11 +19,11 @@ constructor(private formBuilder: FormBuilder,
     firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'), Validators.maxLength(5)]],
     lastName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
     email: ['', [Validators.required, Validators.pattern('[a-zA-Z-9._%+-]+@[a-zA-Z-9._%+-]+.[a-zA-Z]{2,}')]],
+    house: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'), Validators.maxLength(10)]],
     role: ['USER',[Validators.required]]
-  });
-
+  }); 
   if (editingUser){
-    this.userForm.patchValue(editingUser); // El patchValue lo que hace es pisar el valor del form con el que le indiquemos.
+    this.userForm.patchValue(editingUser);
   }
 }
 
@@ -36,9 +36,9 @@ get lastNameControl() {
 }
 
 onSave(): void{
-  if(this.userForm.invalid){ // Cuando el form es INVALIDO
+  if(this.userForm.invalid){ // Invalid form
     this.userForm.markAllAsTouched();
-  }else{ // Cuando el form es VALIDO
+  }else{ // Valid form
     this.matDialogRef.close(this.userForm.value);
   }
 }

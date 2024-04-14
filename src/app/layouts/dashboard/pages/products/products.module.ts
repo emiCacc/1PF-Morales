@@ -22,32 +22,7 @@ export const RANDOM_NUMBER = new InjectionToken('RANDOM_NUMBER'); //Utilizado co
   exports: [ProductsComponent],
 
   providers: [
-    //• Inyeccion useExisting •
     ProductsService
-    
-    //• Inyeccion useClass •
-    // Se utiliza por ejemplo cuando se empieza un proyecto nuevo y no tenemos tiempo
-    // de esperar los endpoints del backend.
-    // {
-    //   provide: ProductsService,     // 1) Se pide el ProductService pero...
-    //   useClass: ProductsService // 2) Se carga el ProductMockService!
-    // },
-  
-    //• Inyeccion useValue •
-    // Se utiliza cuando queremos inyectar una propiedad o valor como una inyeccion de dependencias
-    // {
-    //   provide: API_URL,
-    //   useValue: 'http://localhost:4200/api',
-    // },
-
-    //• Inyeccion useFactory •
-    //
-    // {
-    //   provide: RANDOM_NUMBER,
-    //   useFactory: () => {
-    //     return Math.random();
-    //   }
-    // }
   ],
 })
 export class ProductsModule { }

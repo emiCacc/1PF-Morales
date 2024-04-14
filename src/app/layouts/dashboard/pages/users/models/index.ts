@@ -3,6 +3,6 @@ export interface IUser {
     firstName: string;
     lastName: string;
     email: string;
-    role: 'ADMIN'|'USER';
+    house?: string;  
     createdAt: Date;
 }

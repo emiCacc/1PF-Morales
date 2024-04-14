@@ -29,6 +29,15 @@
                       }}</mat-error>
                 </mat-form-field>
             </div> 
+            <div class="col-8">
+                <mat-form-field class="w-100 p-3" appearance="fill">
+                    <mat-label>Casa</mat-label>
+                    <input formControlName="house" matInput />
+                    <mat-error>{{
+                        userForm.get("house")?.errors | formFieldValidationErrors
+                      }}</mat-error>
+                </mat-form-field>
+            </div> 
             <div class="col-4">
                 <mat-form-field class="w-100 p-3" appearance="fill">
                     <mat-label>Rol</mat-label>
