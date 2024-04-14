@@ -10,7 +10,6 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-errors.pipe';
 import { ResaltadoDirective } from './directives/resaltado.directive';
-import { RepetirDirective } from './directives/repetir.directive';
 import {MatListModule} from '@angular/material/list';
 
 
@@ -18,8 +17,7 @@ import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     FormFieldValidationErrorsPipe,
-    ResaltadoDirective,
-    RepetirDirective
+    ResaltadoDirective
   ],
   imports: [
     CommonModule
@@ -36,7 +34,6 @@ import {MatListModule} from '@angular/material/list';
     MatIconModule,
     FormFieldValidationErrorsPipe,
     ResaltadoDirective,
-    RepetirDirective,
     MatListModule  
   ]
 })

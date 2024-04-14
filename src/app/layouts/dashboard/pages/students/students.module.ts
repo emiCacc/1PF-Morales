@@ -10,12 +10,14 @@ import { PipesYDirectivasModule } from '../pipes-y-directivas/pipes-y-directivas
 import { PipesYDirectivasRoutingModule } from '../pipes-y-directivas/pipes-y-directivas-routing.module';
 import { PipesYDirectivasComponent } from '../pipes-y-directivas/pipes-y-directivas.component';
 import { FullnamePipe } from 'src/app/shared/pipes/full-name.pipe';
+import { FontSizeChangeDirective } from 'src/app/shared/directives/font-size-change.directive';
 
 @NgModule({
   declarations: [
     StudentsComponent,
     StudentsDialogComponent,
-    FullnamePipe
+    FullnamePipe,
+    FontSizeChangeDirective
   ],
   imports: [
     CommonModule,

@@ -14,7 +14,7 @@ import { AsignaturesDialogComponent } from './components/asignatures-dialog/asig
   imports: [
     CommonModule,
     AsignaturesRoutingModule,
-    SharedModule,
+    SharedModule
   ],
   exports: [
     AsignaturesComponent
