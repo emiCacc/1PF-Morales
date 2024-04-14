@@ -45,9 +45,17 @@ openDialog(editingTeacher?: ITeachers): void {
   });
 }
 
-  onDeleteTeacher(id: number): void {
-    if (confirm('Esta seguro?')){
-      this.teachers = this.teachers.filter((u) => u.id != id);
-    }
+openBioTeacher(selectedTeacher: ITeachers){
+  const { name, lastName } = selectedTeacher;
+  const wikipediaUrl = `https://harrypotter.fandom.com/es/wiki/${name}_${lastName}`;
+  window.open(wikipediaUrl, '_blank');
+}
+
+onDeleteTeacher(id: number): void {
+  if (confirm('Esta seguro?')){
+    this.teachers = this.teachers.filter((u) => u.id != id);
   }
+}
+
+
 }
