@@ -6,10 +6,6 @@ import { AsignaturesRoutingModule } from './asignatures-routing.module';
 import { AsignaturesComponent } from './asignatures.component';
 import { AsignaturesDialogComponent } from './components/asignatures-dialog/asignatures-dialog.component';
 
-import { PipesYDirectivasModule } from '../pipes-y-directivas/pipes-y-directivas.module';
-import { PipesYDirectivasRoutingModule } from '../pipes-y-directivas/pipes-y-directivas-routing.module';
-import { PipesYDirectivasComponent } from '../pipes-y-directivas/pipes-y-directivas.component';
-
 @NgModule({
   declarations: [
     AsignaturesComponent,
@@ -19,7 +15,6 @@ import { PipesYDirectivasComponent } from '../pipes-y-directivas/pipes-y-directi
     CommonModule,
     AsignaturesRoutingModule,
     SharedModule,
-    PipesYDirectivasModule
   ],
   exports: [
     AsignaturesComponent

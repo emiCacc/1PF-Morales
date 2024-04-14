@@ -12,7 +12,6 @@ import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-err
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import { RepetirDirective } from './directives/repetir.directive';
 import {MatListModule} from '@angular/material/list';
-import { FontTransform } from './pipes/font-transform.pipe';
 
 
 
@@ -20,8 +19,7 @@ import { FontTransform } from './pipes/font-transform.pipe';
   declarations: [
     FormFieldValidationErrorsPipe,
     ResaltadoDirective,
-    RepetirDirective,
-    FontTransform
+    RepetirDirective
   ],
   imports: [
     CommonModule
@@ -37,7 +35,6 @@ import { FontTransform } from './pipes/font-transform.pipe';
     MatButtonModule,
     MatIconModule,
     FormFieldValidationErrorsPipe,
-    FontTransform,
     ResaltadoDirective,
     RepetirDirective,
     MatListModule  

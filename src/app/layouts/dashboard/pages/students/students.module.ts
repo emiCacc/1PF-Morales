@@ -9,11 +9,13 @@ import { StudentsDialogComponent } from './components/students-dialog/students-d
 import { PipesYDirectivasModule } from '../pipes-y-directivas/pipes-y-directivas.module';
 import { PipesYDirectivasRoutingModule } from '../pipes-y-directivas/pipes-y-directivas-routing.module';
 import { PipesYDirectivasComponent } from '../pipes-y-directivas/pipes-y-directivas.component';
+import { FullnamePipe } from 'src/app/shared/pipes/full-name.pipe';
 
 @NgModule({
   declarations: [
     StudentsComponent,
-    StudentsDialogComponent
+    StudentsDialogComponent,
+    FullnamePipe
   ],
   imports: [
     CommonModule,

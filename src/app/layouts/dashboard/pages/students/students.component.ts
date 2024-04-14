@@ -12,7 +12,7 @@ import { StudentsDialogComponent } from './components/students-dialog/students-d
 // VARIABLE USER ROLE SESSION AQUI
 
 export class StudentsComponent {
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'house', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['id', 'fullname', 'email', 'house', 'createdAt', 'actions'];
 
   students: IStudents[] = [
       { id: 1, firstName: 'Harry', lastName: 'Potter', email: 'harry_potter@gmail.com', house:'Gryffindor', createdAt: new Date() },
