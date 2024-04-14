@@ -5,7 +5,6 @@ import { TeachersRoutingModule } from './teachers-routing.module';
 import { TeachersComponent } from './teachers.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TeachersDialogComponent } from './components/teachers-dialog/teachers-dialog.component';
-import { PipesYDirectivasModule } from '../pipes-y-directivas/pipes-y-directivas.module';
 
 
 @NgModule({
@@ -15,8 +14,7 @@ import { PipesYDirectivasModule } from '../pipes-y-directivas/pipes-y-directivas
   imports: [
     CommonModule,
     TeachersRoutingModule,
-    SharedModule,
-    PipesYDirectivasModule
+    SharedModule
   ],
   exports:[
     TeachersComponent

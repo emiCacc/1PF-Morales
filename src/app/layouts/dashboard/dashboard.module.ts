@@ -8,7 +8,6 @@ import { DashboardComponent } from './dashboard.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { StudentsModule } from './pages/students/students.module';
-import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
 import { AsignaturesModule } from './pages/asignatures/asignatures.module';
 import { TeachersModule } from './pages/teachers/teachers.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -23,7 +22,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatSidenavModule,
     MatToolbarModule,
     StudentsModule,
-    PipesYDirectivasModule,
     AsignaturesModule,
     TeachersModule,
     SharedModule
