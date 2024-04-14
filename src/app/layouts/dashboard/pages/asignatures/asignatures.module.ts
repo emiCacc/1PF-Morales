@@ -9,7 +9,7 @@ import { AsignaturesDialogComponent } from './components/asignatures-dialog/asig
 @NgModule({
   declarations: [
     AsignaturesComponent,
-    AsignaturesDialogComponent
+    AsignaturesDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -7,14 +7,12 @@ import { StudentsComponent } from './../students/students.component';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 
 import { FullnamePipe } from 'src/app/shared/pipes/full-name.pipe';
-import { FontSizeChangeDirective } from 'src/app/shared/directives/font-size-change.directive';
 
 @NgModule({
   declarations: [
     StudentsComponent,
     StudentsDialogComponent,
-    FullnamePipe,
-    FontSizeChangeDirective
+    FullnamePipe
   ],
   imports: [
     CommonModule,

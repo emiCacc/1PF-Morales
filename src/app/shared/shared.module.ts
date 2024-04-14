@@ -11,13 +11,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-errors.pipe';
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import {MatListModule} from '@angular/material/list';
+import { FontSizeChangeDirective } from './directives/font-size-change.directive';
 
 
 
 @NgModule({
   declarations: [
     FormFieldValidationErrorsPipe,
-    ResaltadoDirective
+    ResaltadoDirective,
+    FontSizeChangeDirective
   ],
   imports: [
     CommonModule
@@ -34,7 +36,8 @@ import {MatListModule} from '@angular/material/list';
     MatIconModule,
     FormFieldValidationErrorsPipe,
     ResaltadoDirective,
-    MatListModule  
+    MatListModule  ,
+    FontSizeChangeDirective
   ]
 })
 export class SharedModule { }
