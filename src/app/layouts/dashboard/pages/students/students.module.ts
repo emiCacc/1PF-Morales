@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UsersRoutingModule } from './users-routing.module';
-import { UsersComponent } from './users.component';
+import { StudentsRoutingModule } from './students-routing.module';
+import { StudentsComponent } from './../students/students.component';
 
-import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
+import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PipesYDirectivasModule } from '../pipes-y-directivas/pipes-y-directivas.module';
 import { PipesYDirectivasRoutingModule } from '../pipes-y-directivas/pipes-y-directivas-routing.module';
@@ -14,16 +14,16 @@ import { PipesYDirectivasComponent } from '../pipes-y-directivas/pipes-y-directi
 
 @NgModule({
   declarations: [
-    UsersComponent,
-    UserDialogComponent
+    StudentsComponent,
+    StudentsDialogComponent
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule,
+    StudentsRoutingModule,
     SharedModule
   ],
   exports: [
-    UsersComponent
+    StudentsComponent
   ],
 })
-export class UsersModule { }
+export class StudentsModule { }

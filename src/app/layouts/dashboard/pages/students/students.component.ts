@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { IStudents } from './models';
 import { MatDialog } from '@angular/material/dialog';
-import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
+import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-students',
+  templateUrl: './students.component.html',
+  styleUrls: ['./students.component.scss']
 })
 
-// VARIABLE USER ROLE SESSION AQI
+// VARIABLE USER ROLE SESSION AQUI
 
-export class UsersComponent {
+export class StudentsComponent {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'house', 'createdAt', 'actions'];
 
   students: IStudents[] = [
@@ -36,7 +36,7 @@ export class UsersComponent {
 
   openDialog(editingUser?: IStudents): void {
     this.matDialog
-      .open(UserDialogComponent,{
+      .open(StudentsDialogComponent,{
         data: editingUser,
       })
       .afterClosed()
@@ -45,13 +45,10 @@ export class UsersComponent {
           if(result){
 
             if(editingUser){
-              //ACTUALIZACION DEL USUARIO EN EL ARRAY
               this.students = this.students.map((u) => u.id === editingUser.id ? { ...u, ...result } : u);
             } else {
-              //WHEN CIERRO EL MODAL:
               result.id = new Date().getTime().toString().substring(0,2);
               result.createdAt = new Date();
-              //this.users.push(result); //NO funciona en Angular Material xq este necesita que le mande un ARRAY NUEVO, (no un usuario nuevo)
               this.students = [...this.students, result];
             }
         }

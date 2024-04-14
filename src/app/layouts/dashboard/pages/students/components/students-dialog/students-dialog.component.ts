@@ -4,19 +4,19 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IStudents } from '../../models';
 
 @Component({
-  selector: 'app-user-dialog',
-  templateUrl: './user-dialog.component.html',
-  styleUrls: ['./user-dialog.component.scss']
+  selector: 'app-students-dialog',
+  templateUrl: './students-dialog.component.html',
+  styleUrls: ['./students-dialog.component.scss']
 })
-export class UserDialogComponent {
+export class StudentsDialogComponent {
   userForm: FormGroup;
 
 constructor(private formBuilder: FormBuilder,
-            private matDialogRef: MatDialogRef<UserDialogComponent>,
+            private matDialogRef: MatDialogRef<StudentsDialogComponent>,
             @Inject(MAT_DIALOG_DATA) private editingUser?: IStudents){
   //console.log(editingUser);              
   this.userForm = this.formBuilder.group({
-    firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'), Validators.maxLength(5)]],
+    firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'), Validators.maxLength(10)]],
     lastName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
     email: ['', [Validators.required, Validators.pattern('[a-zA-Z-9._%+-]+@[a-zA-Z-9._%+-]+.[a-zA-Z]{2,}')]],
     house: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'), Validators.maxLength(10)]],
