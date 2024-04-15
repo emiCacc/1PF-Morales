@@ -16,7 +16,7 @@ export class StudentsComponent {
   students: IStudents[] = [
       { id: 1, firstName: 'Harry', lastName: 'Potter', email: 'harry_potter@gmail.com', house:'Gryffindor', createdAt: new Date() },
       { id: 2, firstName: 'Hermione', lastName: 'Granger', email: 'hermione_granger@gmail.com', house:'Gryffindor', createdAt: new Date() },
-      { id: 3, firstName: 'Ron', lastName: 'Weasley', email: 'ron_wasley@gmail.com', house:'Gryffindor', createdAt: new Date() },
+      { id: 3, firstName: 'Ronald', lastName: 'Weasley', email: 'ron_wasley@gmail.com', house:'Gryffindor', createdAt: new Date() },
 
       { id: 4, firstName: 'Draco', lastName: 'Malfoy', email: 'draco_malfoy@gmail.com', house:'Slytherin', createdAt: new Date() },
       { id: 5, firstName: 'Vincent', lastName: 'Crabbe', email: 'vincent_crabbe@gmail.com', house:'Slytherin', createdAt: new Date() },
@@ -24,7 +24,7 @@ export class StudentsComponent {
 
       { id: 7, firstName: 'Cedric', lastName: 'Diggory', email: 'cedric_diggory@gmail.com', house:'Hufflepuff', createdAt: new Date() },
       { id: 8, firstName: 'Hannah', lastName: 'Abbott', email: 'hannah_abbott@gmail.com', house:'Hufflepuff', createdAt: new Date() },
-      { id: 9, firstName: 'Newt', lastName: 'Scammander', email: 'new_scammander@gmail.com', house:'Hufflepuff', createdAt: new Date() },
+      { id: 9, firstName: 'Artemisa', lastName: 'Lufkin', email: 'lartemisia@yahoo.com', house:'Hufflepuff', createdAt: new Date() },
 
       { id: 10, firstName: 'Luna', lastName: 'Lovegood', email: 'seamus_finnigan@gmail.com', house:'Ravenclaw', createdAt: new Date() },
       { id: 10, firstName: 'Cho', lastName: 'Chang', email: 'seamus_finnigan@gmail.com', house:'Ravenclaw', createdAt: new Date() },
@@ -83,6 +83,12 @@ export class StudentsComponent {
           }
         },
       });
+  }
+
+  openBioStudent(selectedTeacher: IStudents){
+    const { firstName, lastName } = selectedTeacher;
+    const wikipediaUrl = `https://harrypotter.fandom.com/es/wiki/${firstName}_${lastName}`;
+    window.open(wikipediaUrl, '_blank');
   }
       
   onDeleteStudent(id: number): void {
