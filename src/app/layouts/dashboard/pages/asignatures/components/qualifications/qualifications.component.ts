@@ -40,7 +40,7 @@ export class QualificationsComponent implements OnInit {
   private updateDataSource(): void {
     this.dataSource = [];
     this.students.forEach(student => {
-      const rowData: any = { id: student.id, studentName: student.firstName };
+      const rowData: any = { id: student.id, studentName: student.firstName + ' ' + student.lastName };
       this.asignatures.forEach(asignature => {
         const grade = this.getGradeForStudentAndAsignature(student.id, asignature.id);
         rowData[asignature.asignature] = grade !== undefined ? grade : '-';
