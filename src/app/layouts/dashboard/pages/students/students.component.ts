@@ -10,8 +10,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./students.component.scss']
 })
 
-// VARIABLE USER ROLE SESSION AQUI
-
 export class StudentsComponent {
   displayedColumns: string[] = ['id', 'fullname', 'email', 'house', 'createdAt', 'actions'];
 
@@ -43,18 +41,48 @@ export class StudentsComponent {
       .afterClosed()
       .subscribe({
         next: (result) => {
-          if(result){
-
-            if(editingUser){
-              this.students = this.students.map((u) => u.id === editingUser.id ? { ...u, ...result } : u);
+          if (result !== undefined) {
+            if (editingUser) {
+              let isChanged = false;
+              for (const key in result) {
+                if (result.hasOwnProperty(key) && (result as any)[key] !== (editingUser as any)[key]) {
+                  isChanged = true;
+                  break;
+                }
+              }
+              if (isChanged) {
+                this.students = this.students.map((u) => u.id === editingUser.id ? { ...u, ...result } : u);
+                Swal.fire({
+                  title: '¡Realizado!',
+                  text: '¡Alumno actualizado con éxito!',
+                  icon: 'success'
+                });
+              } else {
+                Swal.fire({
+                  title: 'No pasó nada',
+                  text: 'No se realizaron cambios...',
+                  icon: 'info'
+                });
+              }
             } else {
-              result.id = new Date().getTime().toString().substring(0,2);
+              result.id = new Date().getTime().toString().substring(0, 2);
               result.createdAt = new Date();
               this.students = [...this.students, result];
+              Swal.fire({
+                title: '¡Realizado!',
+                text: '¡Alumno agregado con éxito!',
+                icon: 'success'
+              });
             }
-        }
-      },
-    });
+          } else {
+            Swal.fire({
+              title: 'No pasó nada',
+              text: 'No se realizaron cambios...',
+              icon: 'info'
+            });
+          }
+        },
+      });
   }
       
   onDeleteStudent(id: number): void {
