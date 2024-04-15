@@ -7,11 +7,11 @@ import { IStudents } from 'src/app/layouts/dashboard/pages/students/models/stude
   providedIn: 'root'
 })
 export class StudentsService {
-  private asignaturesSubject: BehaviorSubject<IStudents[]> = new BehaviorSubject<IStudents[]>([]);
-  asignatures$: Observable<IStudents[]> = this.asignaturesSubject.asObservable();
+  private studentsSubject: BehaviorSubject<IStudents[]> = new BehaviorSubject<IStudents[]>([]);
+  students$: Observable<IStudents[]> = this.studentsSubject.asObservable();
   constructor() { }
 
-  setAsignatures(asignatures: IStudents[]): void {
-    this.asignaturesSubject.next(asignatures);
+  setAsignatures(students: IStudents[]): void {
+    this.studentsSubject.next(students);
   }
 }
