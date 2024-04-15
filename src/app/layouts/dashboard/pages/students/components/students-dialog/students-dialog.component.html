@@ -1,5 +1,5 @@
-<h1 mat-dialog-title>{{ mode === 'add' ? 'Inscribir alumno' : 'Editar alumno' }}</h1>
-<div mat-dialog-content> 
+<h1 mat-dialog-title class="shadow-btn-background font-white">{{ mode === 'add' ? 'Inscribir alumno' : 'Editar alumno' }}</h1>
+<div mat-dialog-content class="shadow-background"> 
     <form [formGroup]="studentsForm">
         <div class="row">
             <!-- Name -->
@@ -7,7 +7,7 @@
                 <mat-form-field class="w-100 p-3" appearance="fill">
                     <mat-label>Nombre</mat-label>
                     <input formControlName="firstName" matInput />
-                    <mat-hint>El nombre debe tener al menos 6 caracteres</mat-hint>
+                    <mat-hint>Nombre del alumno</mat-hint>
                     <mat-error>{{ firstNameControl?.errors | formFieldValidationErrors }}</mat-error>
                 </mat-form-field>
             </div>
@@ -16,7 +16,7 @@
                 <mat-form-field class="w-100 p-3" appearance="fill">
                     <mat-label>Apellido</mat-label>
                     <input formControlName="lastName" matInput />
-                    <mat-hint>El apellido debe tener al menos 6 caracteres</mat-hint>
+                    <mat-hint>Apellido del alumno</mat-hint>
                     <mat-error>{{ lastNameControl?.errors | formFieldValidationErrors }}</mat-error>
                 </mat-form-field>
             </div> 
@@ -25,6 +25,7 @@
                 <mat-form-field class="w-100 p-3" appearance="fill">
                     <mat-label>Email</mat-label>
                     <input formControlName="email" matInput />
+                    <mat-hint>Correo electronico</mat-hint>
                     <mat-error>{{
                         studentsForm.get("email")?.errors | formFieldValidationErrors
                       }}</mat-error>
@@ -34,6 +35,7 @@
             <div class="col-6">
                 <mat-form-field class="w-100 p-3" appearance="fill">
                     <mat-label>Casa</mat-label>
+                    <mat-hint>Selecciona una de las 4 casas</mat-hint>
                     <mat-select formControlName="house">
                         <mat-option value="Gryffindor">Gryffindor</mat-option>
                         <mat-option value="Slytherin">Slytherin</mat-option>
@@ -51,9 +53,7 @@
         <img [src]="imageUrl" alt="House Logo" width="100">
     </div>
 </div>
-
-
-<div class="d-flex justify-content-end" mat-dialog-actions>
-    <button mat-dialog-close mat-button>Cancelar</button>
-    <button (click)="onSave()" mat-button>{{ mode === 'add' ? 'Guardar' : 'Actualizar' }}</button>
+<div class="d-flex justify-content-center shadow-btn-background" mat-dialog-actions>
+    <button mat-dialog-close mat-button class="font-white">Cancelar</button>
+    <button (click)="onSave()" mat-button class="font-white">{{ mode === 'add' ? 'Guardar' : 'Actualizar' }}</button>
 </div>
