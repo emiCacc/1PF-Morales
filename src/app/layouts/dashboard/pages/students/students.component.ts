@@ -28,8 +28,8 @@ export class StudentsComponent implements OnInit{
       { id: 9, firstName: 'Artemisa', lastName: 'Lufkin', email: 'lartemisia@yahoo.com', house:'Hufflepuff', createdAt: new Date() },
 
       { id: 10, firstName: 'Luna', lastName: 'Lovegood', email: 'seamus_finnigan@gmail.com', house:'Ravenclaw', createdAt: new Date() },
-      { id: 10, firstName: 'Cho', lastName: 'Chang', email: 'seamus_finnigan@gmail.com', house:'Ravenclaw', createdAt: new Date() },
-      { id: 10, firstName: 'Padma', lastName: 'Patil', email: 'seamus_finnigan@gmail.com', house:'Ravenclaw', createdAt: new Date() },
+      { id: 11, firstName: 'Cho', lastName: 'Chang', email: 'seamus_finnigan@gmail.com', house:'Ravenclaw', createdAt: new Date() },
+      { id: 12, firstName: 'Padma', lastName: 'Patil', email: 'seamus_finnigan@gmail.com', house:'Ravenclaw', createdAt: new Date() },
   ];
 
   constructor(private matDialog: MatDialog,
