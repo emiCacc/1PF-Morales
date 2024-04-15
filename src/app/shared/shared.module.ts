@@ -12,6 +12,7 @@ import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-err
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import {MatListModule} from '@angular/material/list';
 import { FontSizeChangeDirective } from './directives/font-size-change.directive';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -36,8 +37,9 @@ import { FontSizeChangeDirective } from './directives/font-size-change.directive
     MatIconModule,
     FormFieldValidationErrorsPipe,
     ResaltadoDirective,
-    MatListModule  ,
-    FontSizeChangeDirective
+    MatListModule,
+    FontSizeChangeDirective,
+    MatTooltipModule
   ]
 })
 export class SharedModule { }

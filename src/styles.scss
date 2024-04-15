@@ -65,11 +65,17 @@ body {
 }
 
 .font-harry{
-  font-family: 'HARRYP__', sans-serif;
-  font-size: xxx-large;
-  margin-left: 5%;
-}
-.btn-toolbar,
-.font-harry{
+  font-size: xxx-large;  
   color: darkgoldenrod;
+}
+
+.byMe{
+  font-size: large;
+  color: #ff4081;
+}
+
+.font-harry,
+.byMe{
+  margin-left: 5%;
+  font-family: 'HARRYP__', sans-serif;
 }
