@@ -120,7 +120,6 @@ export class StudentsComponent implements OnInit{
 
   sendUsersToQualifications(): void {
     this.studentsService.setAsignatures(this.students);
-    console.log(this.students);
   }
   
   

@@ -106,7 +106,6 @@ ngOnInit(): void {
 
 sendAsignaturesToQualifications(): void {
   this.asignaturesService.setAsignatures(this.asignatures);
-  console.log(this.asignatures);
 }
 
 }

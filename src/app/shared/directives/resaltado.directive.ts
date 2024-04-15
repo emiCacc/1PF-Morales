@@ -14,7 +14,6 @@ export class ResaltadoDirective implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
     if(changes['bgColor']){
       this.elementRef.nativeElement.style.backgroundColor =changes['bgColor'].currentValue || 'yellow';
   }
