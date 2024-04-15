@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,19 @@ export class DashboardComponent {
   selectedComponent: string = 'students';
   showFiller = false;
   qualifications = false;
+
+  constructor(
+    private elementRef: ElementRef,
+    private renderer: Renderer2
+  ) {}
+
+  ngAfterViewChecked() {
+    this.scrollToTop();
+  }
+  
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
  
   selectComponent(component: string): void {
     this.selectedComponent = component;
