@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Agregar profesor</h1>
+<h1 mat-dialog-title>{{ mode === 'add' ? 'Agregar profesor' : 'Editar profesor' }}</h1>
 <div mat-dialog-content> 
     <form [formGroup]="teachersForm">
         <div class="row">
@@ -34,5 +34,5 @@
 
 <div class="d-flex justify-content-end" mat-dialog-actions>
     <button mat-dialog-close mat-button>Cancelar</button>
-    <button (click)="onSave()" mat-button>Guardar</button>
+    <button (click)="onSave()" mat-button>{{ mode === 'add' ? 'Guardar' : 'Actualizar' }}</button>
 </div>

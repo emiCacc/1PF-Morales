@@ -10,10 +10,12 @@ import { ITeachers } from '../../models/teachers_iface';
 })
 export class TeachersDialogComponent {
   teachersForm: FormGroup;
+  mode: 'add' | 'edit';
 
   constructor(private formBuilder: FormBuilder,
               private matDialogRef: MatDialogRef<TeachersDialogComponent>,
               @Inject(MAT_DIALOG_DATA) private editingTeacher?: ITeachers){
+                this.mode = editingTeacher ? 'edit' : 'add';         
                 
               this.teachersForm = this.formBuilder.group({
                 id: [editingTeacher?.id || ''], 

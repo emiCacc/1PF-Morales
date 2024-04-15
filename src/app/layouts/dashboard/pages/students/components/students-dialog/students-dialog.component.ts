@@ -11,11 +11,12 @@ import { IStudents } from '../../models/students_iface';
 export class StudentsDialogComponent implements OnInit {
   studentsForm: FormGroup;
   imageUrl: string = 'assets/img/logo_hogwartsT.png';
+  mode: 'add' | 'edit';
 
 constructor(private formBuilder: FormBuilder,
             private matDialogRef: MatDialogRef<StudentsDialogComponent>,
             @Inject(MAT_DIALOG_DATA) private editingUser?: IStudents){
-  //console.log(editingUser);              
+  this.mode = editingUser ? 'edit' : 'add';         
   this.studentsForm = this.formBuilder.group({
     firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'), Validators.maxLength(10)]],
     lastName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],

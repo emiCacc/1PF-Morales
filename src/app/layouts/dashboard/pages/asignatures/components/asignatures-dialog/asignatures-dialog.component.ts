@@ -11,10 +11,12 @@ import { IAsignatures } from '../../models/asignatures_iface';
 })
 export class AsignaturesDialogComponent {
   asignaturesForm: FormGroup;
+  mode: 'add' | 'edit';
 
 constructor(private formBuilder: FormBuilder,
             private matDialogRef: MatDialogRef<AsignaturesDialogComponent>,
             @Inject(MAT_DIALOG_DATA) private editingAsignature?: IAsignatures){
+              this.mode = editingAsignature ? 'edit' : 'add';  
             this.asignaturesForm = this.formBuilder.group({
               id: [editingAsignature?.id || ''], 
               asignature: ['', [Validators.required]],
