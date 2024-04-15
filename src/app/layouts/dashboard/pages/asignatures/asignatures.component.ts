@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { IAsignatures } from './models/asignatures_iface';
 import { MatDialog } from '@angular/material/dialog';
 import { AsignaturesDialogComponent } from './components/asignatures-dialog/asignatures-dialog.component';
 import Swal from 'sweetalert2';
+import { AsignaturesService } from 'src/app/shared/services/asignatures.service';
 
 @Component({
   selector: 'app-asignatures',
   templateUrl: './asignatures.component.html',
   styleUrls: ['./asignatures.component.scss']
 })
-export class AsignaturesComponent {
+export class AsignaturesComponent implements OnInit{
+
   displayedColumns: string[] = ['id', 'asignature', 'asignatureType', 'enrolled', 'professor', 'actions'];
 
   asignatures: IAsignatures[] = [
@@ -23,7 +25,8 @@ export class AsignaturesComponent {
     { id: 8, asignature: 'Pociones', asignatureType: 'Obligatoria', enrolled: '25', professor: 'Horace Slughorn' },
 ];
 
-constructor(private matDialog: MatDialog) {}
+constructor( private matDialog: MatDialog,
+             private asignaturesService: AsignaturesService ) {}
 
 openDialog(editingAsignature?: IAsignatures): void {
   this.matDialog
@@ -97,6 +100,13 @@ onDeleteAsignature(id: number): void {
   });
 }
 
+ngOnInit(): void {
+  this.sendAsignaturesToQualifications();
+}
 
+sendAsignaturesToQualifications(): void {
+  this.asignaturesService.setAsignatures(this.asignatures);
+  console.log(this.asignatures);
+}
 
 }

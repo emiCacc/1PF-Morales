@@ -5,11 +5,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AsignaturesRoutingModule } from './asignatures-routing.module';
 import { AsignaturesComponent } from './asignatures.component';
 import { AsignaturesDialogComponent } from './components/asignatures-dialog/asignatures-dialog.component';
+import { QualificationsComponent } from './components/qualifications/qualifications.component';
 
 @NgModule({
   declarations: [
     AsignaturesComponent,
     AsignaturesDialogComponent,
+    QualificationsComponent,
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { AsignaturesDialogComponent } from './components/asignatures-dialog/asig
     SharedModule
   ],
   exports: [
-    AsignaturesComponent
+    AsignaturesComponent,
+    QualificationsComponent
   ]
 })
 export class AsignaturesModule { }

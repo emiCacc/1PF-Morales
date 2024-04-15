@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
   selectedComponent: string = 'students';
   showFiller = false;
+  qualifications = false;
  
   selectComponent(component: string) {
     this.selectedComponent = component;
@@ -16,6 +17,10 @@ export class DashboardComponent {
 // Determines if the screen is a smartphone screen (less than 280px). 
 isMobile(): boolean {
   return window.innerWidth <= 280;
+}
+
+showQualifications(): void {
+  this.qualifications = true;
 }
 
 }

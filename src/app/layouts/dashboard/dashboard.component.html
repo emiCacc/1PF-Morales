@@ -2,24 +2,27 @@
     <!-- SIDEBAR -->
     <mat-drawer #drawer [opened]="false" class="shadow-btn-background" [mode]="isMobile() ? 'over' : 'side'">
         <mat-list>
-            <a mat-list-item (click)="selectComponent('students')" class="sidebar-block">
-              <mat-icon matListIcon color="accent">school</mat-icon><span class="sidebar-item">Alumnos</span>
-            </a>
-            <a mat-list-item (click)="selectComponent('asignatures')" class="sidebar-block">
-              <mat-icon matListIcon color="accent">book</mat-icon><span class="sidebar-item">Materias</span>
-            </a>
-            <a mat-list-item (click)="selectComponent('teachers')" class="sidebar-block">
-              <mat-icon matListIcon color="accent">person</mat-icon><span class="sidebar-item">Profesores</span>
-            </a>
-          </mat-list>
-          <div class="sidebar-footer">
-            <span mat-list-item class="byMe"  
-              #tooltip="matTooltip"
-              matTooltip="¡Gracias por ver mi primera entrega del Proyecto Final del curso de Angular de CoderHouse!"
-              matTooltipHideDelay="100"
-              tooltipPosition="top">Emi Morales
-            </span>   
-          </div>
+          <a mat-list-item (click)="selectComponent('students')" class="sidebar-block">
+            <mat-icon matListIcon color="accent">school</mat-icon><span class="sidebar-item">Alumnos</span>
+          </a>
+          <a mat-list-item (click)="selectComponent('teachers')" class="sidebar-block">
+            <mat-icon matListIcon color="accent">person</mat-icon><span class="sidebar-item">Profesores</span>
+          </a>
+          <a mat-list-item (click)="selectComponent('asignatures'); showQualifications()" class="sidebar-block">
+            <mat-icon matListIcon color="accent">book</mat-icon><span class="sidebar-item">Materias</span>
+          </a>
+          <a *ngIf="qualifications" (click)="selectComponent('qualifications')" mat-list-item class="sidebar-block">
+            <mat-icon matListIcon color="accent">checklist</mat-icon><span class="sidebar-item">Calificaciones</span>
+          </a>
+        </mat-list>      
+        <div class="sidebar-footer">
+          <span mat-list-item class="byMe"  
+            #tooltip="matTooltip"
+            matTooltip="¡Gracias por ver mi primera entrega del Proyecto Final del curso de Angular de CoderHouse!"
+            matTooltipHideDelay="100"
+            tooltipPosition="top">Emi Morales
+          </span>   
+        </div>
     </mat-drawer>
   
     <!-- TOOLBAR -->
@@ -35,6 +38,7 @@
         <app-students *ngIf="selectedComponent === 'students'" />
         <app-asignatures *ngIf="selectedComponent === 'asignatures'" />
         <app-teachers *ngIf="selectedComponent === 'teachers'" />
+        <app-qualifications *ngIf="selectedComponent === 'qualifications'" />
       </main>
     </div>
   </mat-drawer-container>

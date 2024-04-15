@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IStudents } from './models/students_iface';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 import Swal from 'sweetalert2';
+import { StudentsService } from 'src/app/shared/services/students.service';
 
 @Component({
   selector: 'app-students',
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./students.component.scss']
 })
 
-export class StudentsComponent {
+export class StudentsComponent implements OnInit{
   displayedColumns: string[] = ['id', 'fullname', 'email', 'house', 'createdAt', 'actions'];
 
   students: IStudents[] = [
@@ -31,7 +32,8 @@ export class StudentsComponent {
       { id: 10, firstName: 'Padma', lastName: 'Patil', email: 'seamus_finnigan@gmail.com', house:'Ravenclaw', createdAt: new Date() },
   ];
 
-  constructor(private matDialog: MatDialog) {}
+  constructor(private matDialog: MatDialog,
+              private studentsService: StudentsService) {}
 
   openDialog(editingUser?: IStudents): void {
     this.matDialog
@@ -110,6 +112,15 @@ export class StudentsComponent {
         });
       }
     });
+  }
+
+  ngOnInit(): void {
+    this.sendUsersToQualifications();
+  }
+
+  sendUsersToQualifications(): void {
+    this.studentsService.setAsignatures(this.students);
+    console.log(this.students);
   }
   
   
