@@ -10,9 +10,15 @@ export class DashboardComponent {
   showFiller = false;
   qualifications = false;
  
-  selectComponent(component: string) {
+  selectComponent(component: string): void {
     this.selectedComponent = component;
+    if (component === 'asignatures' || component === 'qualifications') {
+      this.qualifications = true; 
+    } else {
+      this.qualifications = false;
+    }
   }
+  
   
 // Determines if the screen is a smartphone screen (less than 280px). 
 isMobile(): boolean {
