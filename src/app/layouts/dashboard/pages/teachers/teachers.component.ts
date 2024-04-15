@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ITeachers } from './models/teachers_iface';
 import { MatDialog } from '@angular/material/dialog';
 import { TeachersDialogComponent } from './components/teachers-dialog/teachers-dialog.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-teachers',
@@ -52,9 +53,24 @@ openBioTeacher(selectedTeacher: ITeachers){
 }
 
 onDeleteTeacher(id: number): void {
-  if (confirm('Esta seguro?')){
-    this.teachers = this.teachers.filter((u) => u.id != id);
-  }
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: 'Esta acción eliminará al profesor seleccionado.',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Aceptar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.teachers = this.teachers.filter((u) => u.id != id);
+      Swal.fire({
+        title: '¡Realizado!',
+        text: 'Profesor eliminado con éxito.',
+        icon: 'success'
+      });
+    }
+  });
 }
 
 

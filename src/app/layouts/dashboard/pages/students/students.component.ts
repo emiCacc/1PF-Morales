@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IStudents } from './models/students_iface';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-students',
@@ -55,10 +56,26 @@ export class StudentsComponent {
       },
     });
   }
-    
+      
   onDeleteStudent(id: number): void {
-    if (confirm('Esta seguro?'))
-    this.students = this.students.filter((u) => u.id != id);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción eliminará a este usuario',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.students = this.students.filter((u) => u.id !== id);  
+        Swal.fire({
+          title: '¡Realizado!',
+          text: 'Has eliminado al usuario.',
+          icon: 'success'
+        });
+      }
+    });
   }
   
   

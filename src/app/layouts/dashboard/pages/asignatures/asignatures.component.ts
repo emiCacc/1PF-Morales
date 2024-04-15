@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IAsignatures } from './models/asignatures_iface';
 import { MatDialog } from '@angular/material/dialog';
 import { AsignaturesDialogComponent } from './components/asignatures-dialog/asignatures-dialog.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-asignatures',
@@ -46,8 +47,26 @@ openDialog(editingAsignature?: IAsignatures): void {
 }
 
 onDeleteAsignature(id: number): void {
-  if (confirm('Esta seguro?'))
-  this.asignatures = this.asignatures.filter((u) => u.id != id);
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: 'Esta acción eliminará la materia seleccionada.',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Aceptar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.asignatures = this.asignatures.filter((u) => u.id != id);
+      Swal.fire({
+        title: '¡Realizado!',
+        text: 'Materia eliminada con éxito.',
+        icon: 'success'
+      });
+    }
+  });
 }
+
+
 
 }
