@@ -33,14 +33,44 @@ openDialog(editingAsignature?: IAsignatures): void {
     .afterClosed()
     .subscribe({
       next: (result) => {
-        if(result){
-
+        if(result !== undefined){
           if(editingAsignature){
-            this.asignatures = this.asignatures.map((u) => u.id === editingAsignature.id ? { ...u, ...result } : u);
+            let isChanged = false;
+            for (const key in result) {
+              if (result.hasOwnProperty(key) && (result as any)[key] !== (editingAsignature as any)[key]) {
+                isChanged = true;
+                break;
+              }
+            }
+            if (isChanged) { 
+                this.asignatures = this.asignatures.map((u) => u.id === editingAsignature.id ? { ...u, ...result } : u);
+                Swal.fire({
+                  title: '¡Realizado!',
+                  text: 'Materia actualizada con éxito!',
+                  icon: 'success'
+                });
+            } else {
+              Swal.fire({
+                title: 'No sucedió nada',
+                text: 'No se realizaron cambios...',
+                icon: 'info'
+              });
+            }
           } else {
             result.id = new Date().getTime().toString().substring(0,2);
             this.asignatures = [...this.asignatures, result];
-          }
+            Swal.fire({
+              title: '¡Realizado!',
+              text: '¡Alumno agregado con éxito!',
+              icon: 'success'
+            });
+          }      
+        } else {
+          Swal.fire({
+            title: 'No sucedió nada',
+            text: 'No se realizaron cambios...',
+            icon: 'info'
+          });    
       }
     },
   });

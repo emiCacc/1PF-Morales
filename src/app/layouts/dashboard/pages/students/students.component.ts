@@ -59,7 +59,7 @@ export class StudentsComponent {
                 });
               } else {
                 Swal.fire({
-                  title: 'No pasó nada',
+                  title: 'No sucedió nada',
                   text: 'No se realizaron cambios...',
                   icon: 'info'
                 });
@@ -76,7 +76,7 @@ export class StudentsComponent {
             }
           } else {
             Swal.fire({
-              title: 'No pasó nada',
+              title: 'No sucedió nada',
               text: 'No se realizaron cambios...',
               icon: 'info'
             });
@@ -99,7 +99,7 @@ export class StudentsComponent {
         this.students = this.students.filter((u) => u.id !== id);  
         Swal.fire({
           title: '¡Realizado!',
-          text: 'Has eliminado al usuario.',
+          text: 'Alumno eliminado con éxito.',
           icon: 'success'
         });
       }

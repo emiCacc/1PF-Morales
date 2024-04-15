@@ -33,14 +33,44 @@ openDialog(editingTeacher?: ITeachers): void {
     .afterClosed()
     .subscribe({
       next: (result) => {
-        if(result){
-
+        if(result !== undefined){
           if(editingTeacher){
+            let isChanged = false;
+            for (const key in result) {
+              if (result.hasOwnProperty(key) && (result as any)[key] !== (editingTeacher as any)[key]) {
+                isChanged = true;
+                break;
+              }
+            }
+            if (isChanged) {
             this.teachers = this.teachers.map((u) => u.id === editingTeacher.id ? { ...u, ...result } : u);
+            Swal.fire({
+              title: '¡Realizado!',
+              text: 'Profesor actualizado con éxito!',
+              icon: 'success'
+            });
+          } else {
+            Swal.fire({
+              title: 'No sucedió nada',
+              text: 'No se realizaron cambios...',
+              icon: 'info'
+            });
+          }
           } else {
             result.id = new Date().getTime().toString().substring(0,2);
             this.teachers = [...this.teachers, result];
+            Swal.fire({
+              title: '¡Realizado!',
+              text: 'Profesor agregado con éxito!',
+              icon: 'success'
+            });
           }
+        } else {
+          Swal.fire({
+            title: 'No sucedió nada',
+            text: 'No se realizaron cambios...',
+            icon: 'info'
+          });   
       }
     },
   });
