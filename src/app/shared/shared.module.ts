@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-errors.pipe';
-import { ResaltadoDirective } from './directives/resaltado.directive';
 import {MatListModule} from '@angular/material/list';
 import { FontSizeChangeDirective } from './directives/font-size-change.directive';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -19,7 +18,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     FormFieldValidationErrorsPipe,
-    ResaltadoDirective,
     FontSizeChangeDirective
   ],
   imports: [
@@ -36,7 +34,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatButtonModule,
     MatIconModule,
     FormFieldValidationErrorsPipe,
-    ResaltadoDirective,
     MatListModule,
     FontSizeChangeDirective,
     MatTooltipModule
