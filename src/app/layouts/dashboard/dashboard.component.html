@@ -1,29 +1,28 @@
 <mat-drawer-container class="general-container" autosize>
     <!-- SIDEBAR -->
-    <mat-drawer #drawer [opened]="false" class="example-sidenav" [mode]="isMobile() ? 'over' : 'side'">
+    <mat-drawer #drawer [opened]="false" class="shadow-btn-background" [mode]="isMobile() ? 'over' : 'side'">
         <mat-list>
-            <a mat-list-item (click)="selectComponent('students')">
-              <mat-icon matListIcon>school</mat-icon> Alumnos
+            <a mat-list-item (click)="selectComponent('students')" class="sidebar-block">
+              <mat-icon matListIcon color="accent">school</mat-icon><span class="sidebar-item">Alumnos</span>
             </a>
-            <a mat-list-item (click)="selectComponent('asignatures')">
-              <mat-icon matListIcon>book</mat-icon> Materias
+            <a mat-list-item (click)="selectComponent('asignatures')" class="sidebar-block">
+              <mat-icon matListIcon color="accent">book</mat-icon><span class="sidebar-item">Materias</span>
             </a>
-            <a mat-list-item (click)="selectComponent('teachers')">
-              <mat-icon matListIcon>person</mat-icon> Profesores
+            <a mat-list-item (click)="selectComponent('teachers')" class="sidebar-block">
+              <mat-icon matListIcon color="accent">person</mat-icon><span class="sidebar-item">Profesores</span>
             </a>
           </mat-list>
     </mat-drawer>
   
-    <!-- CONTENIDO A LA DERECHA DEL SIDEBAR -->
     <div class="example-sidenav-content">
       <!-- TOOLBAR -->
-      <mat-toolbar color="primary">
-        <!-- Boton del toggle Sidebar -->
-        <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-toolbar color="primary" class="shadow-btn-background">
+        <button (click)="drawer.toggle()" mat-icon-button>
           <mat-icon>menu</mat-icon>
         </button>
-        <span>Colegio Hogwarts de Magia y Hechiceria</span>
+        <span class="toolbar-title">Colegio Hogwarts de Magia y Hechicería</span>
       </mat-toolbar>
+
       <main style="padding: 1rem">
         <app-students *ngIf="selectedComponent === 'students'" />
         <app-asignatures *ngIf="selectedComponent === 'asignatures'" />

@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-
 @include mat.core();
 
 $pf-morales-primary: mat.define-palette(mat.$indigo-palette);
@@ -41,4 +40,29 @@ body {
 
 .font-white {
   color: white;
+}
+
+.sidebar-item {
+  color: #ff4081;
+  padding-left: 5px;
+  vertical-align: super;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-block,
+.sidebar-item {
+  cursor: pointer;
+}
+
+.sidebar-block:hover {
+  background-color: rgba(255, 64, 129, 0.1);
+}
+
+@font-face {
+  font-family: 'harry-potter';
+  src: url('/assets/fonts/HARRYP__.TTF') format('truetype') !important;
+}
+
+.toolbar-title {
+  font-family: 'harry-potter', sans-serif !important;
 }
