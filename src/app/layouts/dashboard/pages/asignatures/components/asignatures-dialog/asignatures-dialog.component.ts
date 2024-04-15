@@ -19,8 +19,8 @@ constructor(private formBuilder: FormBuilder,
               this.mode = editingAsignature ? 'edit' : 'add';  
             this.asignaturesForm = this.formBuilder.group({
               id: [editingAsignature?.id || ''], 
-              asignature: ['', [Validators.required]],
-              professor: ['', [Validators.required]],
+              asignature: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'),]],
+              professor: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'),]],
               asignatureType: ['', [Validators.required]],
             }); 
       if (editingAsignature){
