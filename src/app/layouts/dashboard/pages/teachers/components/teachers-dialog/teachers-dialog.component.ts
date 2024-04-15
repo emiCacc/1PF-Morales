@@ -19,9 +19,9 @@ export class TeachersDialogComponent {
                 
               this.teachersForm = this.formBuilder.group({
                 id: [editingTeacher?.id || ''], 
-                name: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
-                lastName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
-                age: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
+                name: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ ]+$')]],
+                lastName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ ]+$')]],
+                age: ['', [Validators.required]],
               }); 
               
             if (editingTeacher){

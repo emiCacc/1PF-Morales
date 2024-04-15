@@ -18,8 +18,10 @@ constructor(private formBuilder: FormBuilder,
             @Inject(MAT_DIALOG_DATA) private editingUser?: IStudents){
   this.mode = editingUser ? 'edit' : 'add';         
   this.studentsForm = this.formBuilder.group({
-    firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'), Validators.maxLength(10)]],
-    lastName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
+    firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ ]+$')
+, Validators.maxLength(10)]],
+    lastName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ ]+$')
+]],
     email: ['', [Validators.required, Validators.pattern('[a-zA-Z-9._%+-]+@[a-zA-Z-9._%+-]+.[a-zA-Z]{2,}')]],
     house: ['', [Validators.required]],
     role: ['USER',[Validators.required]]
