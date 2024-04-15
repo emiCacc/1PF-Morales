@@ -12,6 +12,7 @@ export class DashboardComponent {
   selectComponent(component: string) {
     this.selectedComponent = component;
   }
+  
 // Determines if the screen is a smartphone screen (less than 280px). 
 isMobile(): boolean {
   return window.innerWidth <= 280;
