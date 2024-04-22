@@ -1,5 +1,8 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 shadow-background">
-
+  <div class="d-flex justify-content-end mb-2">
+    <button mat-button color="accent" class="shadow-btn-background"><mat-icon>add_to_queue</mat-icon>Ver aprobados</button>
+  </div>
+  
   <!-- Id Column -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef class="font-white"> No. </th>
