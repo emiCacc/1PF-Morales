@@ -12,8 +12,7 @@ import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-err
 import {MatListModule} from '@angular/material/list';
 import { FontSizeChangeDirective } from './directives/font-size-change.directive';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -36,7 +35,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     FormFieldValidationErrorsPipe,
     MatListModule,
     FontSizeChangeDirective,
-    MatTooltipModule
+    MatTooltipModule,
+    MatGridListModule
   ]
 })
 export class SharedModule { }
