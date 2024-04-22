@@ -4,10 +4,7 @@ import { IAsignatures } from '../../models/asignatures_iface';
 import { IRowData } from '../../models/rowData_iface';
 import { IStudents } from '../../../students/models/students_iface';
 import { StudentsService } from 'src/app/shared/services/students.service';
-import { Subscription } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
-
-// Definir una interfaz para los elementos de dataSource
+import { Observable, Subscription, combineLatest, map, tap } from 'rxjs';
 @Component({
   selector: 'app-qualifications',
   templateUrl: './qualifications.component.html',
@@ -23,9 +20,12 @@ export class QualificationsComponent implements OnInit, OnDestroy {
   dataSource: IRowData[] = [];
   originalDataSource: IRowData[] = [];
   selectedButton: 'all' | 'approved' | 'failed' | null = 'all';
+  public asignatures$: Observable<IAsignatures[]>;
 
-  constructor(private asignaturesService: AsignaturesService,
-              private studentsService: StudentsService) {}
+  constructor(public asignaturesService: AsignaturesService,
+              public studentsService: StudentsService) {
+                this.asignatures$ = asignaturesService.asignatures$;
+              }
 
   ngOnInit(): void {
     this.asignaturesSubscription = this.asignaturesService.asignatures$.subscribe(asignatures => {
@@ -83,44 +83,76 @@ export class QualificationsComponent implements OnInit, OnDestroy {
 
   filterApproved(): void {
     this.selectedButton = 'approved';
-    this.dataSource = [...this.originalDataSource]; 
-    this.dataSource = this.dataSource.map(row => {
-      const filteredRow: IRowData = { id: row.id, studentName: row.studentName };
-      Object.keys(row).forEach((key: string) => {
-        if (key !== 'id' && key !== 'studentName') {
-          const value = row[key];
-          if (typeof value === 'number' && value >= 6) {
-            filteredRow[key as keyof IRowData] = value; 
-          } else {
-            filteredRow[key as keyof IRowData] = 'Despaprobó';
-          }
-        } else {
-          filteredRow[key as keyof IRowData] = row[key];
-        }
+    combineLatest([this.asignaturesService.asignatures$, this.studentsService.students$])
+      .pipe(
+        tap(() => console.log('Filtrando aprobados')),
+        map(([asignatures, students]) => {
+          return students.map(student => {
+            const rowData: IRowData = { id: student.id, studentName: `${student.firstName} ${student.lastName}` };
+            asignatures.forEach(asignature => {
+              const grade = this.getGradeForStudentAndAsignature(student.id, asignature.id);
+              rowData[asignature.asignature] = grade !== undefined ? grade : '-';
+            });
+            return rowData;
+          })
+          .map(row => {
+            const filteredRow: IRowData = { id: row.id, studentName: row.studentName };
+            Object.keys(row).forEach((key: string) => {
+              if (key !== 'id' && key !== 'studentName') {
+                const value = row[key];
+                if (typeof value === 'number' && value >= 6) {
+                  filteredRow[key as keyof IRowData] = value;
+                } else {
+                  filteredRow[key as keyof IRowData] = 'Desaprobó';
+                }
+              } else {
+                filteredRow[key as keyof IRowData] = row[key];
+              }
+            });
+            return filteredRow;
+          });
+        })
+      )
+      .subscribe(filteredData => {
+        this.dataSource = filteredData;
       });
-      return filteredRow;
-    });
   }
   
   filterFailed(): void {
     this.selectedButton = 'failed';
-    this.dataSource = [...this.originalDataSource];
-    this.dataSource = this.dataSource.map(row => {
-      const filteredRow: IRowData = { id: row.id, studentName: row.studentName };
-      Object.keys(row).forEach((key: string) => {
-        if (key !== 'id' && key !== 'studentName') { 
-          const value = row[key];
-          if (typeof value === 'number' && value <= 5) {
-            filteredRow[key as keyof IRowData] = value; 
-          } else {
-            filteredRow[key as keyof IRowData] = 'Aprobó';
-          }
-        } else {
-          filteredRow[key as keyof IRowData] = row[key];
-        }
+    combineLatest([this.asignaturesService.asignatures$, this.studentsService.students$])
+      .pipe(
+        tap(() => console.log('Filtrando desaprobados')),
+        map(([asignatures, students]) => {
+          return students.map(student => {
+            const rowData: IRowData = { id: student.id, studentName: `${student.firstName} ${student.lastName}` };
+            asignatures.forEach(asignature => {
+              const grade = this.getGradeForStudentAndAsignature(student.id, asignature.id);
+              rowData[asignature.asignature] = grade !== undefined ? grade : '-';
+            });
+            return rowData;
+          })
+          .map(row => {
+            const filteredRow: IRowData = { id: row.id, studentName: row.studentName };
+            Object.keys(row).forEach((key: string) => {
+              if (key !== 'id' && key !== 'studentName') {
+                const value = row[key];
+                if (typeof value === 'number' && value <= 5) {
+                  filteredRow[key as keyof IRowData] = value;
+                } else {
+                  filteredRow[key as keyof IRowData] = 'Aprobó';
+                }
+              } else {
+                filteredRow[key as keyof IRowData] = row[key];
+              }
+            });
+            return filteredRow;
+          });
+        })
+      )
+      .subscribe(filteredData => {
+        this.dataSource = filteredData;
       });
-      return filteredRow;
-    });
   }
   
   showAll(): void {
