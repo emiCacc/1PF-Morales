@@ -2,13 +2,13 @@
 
   <mat-grid-list cols="3" rowHeight="5:1">
     <mat-grid-tile>
-      <button mat-button color="accent" class="shadow-btn-background"><mat-icon>check_box</mat-icon>Ver solo aprobados</button>
+      <button mat-button color="accent" class="shadow-btn-background" [class.active]="selectedButton === 'approved'" (click)="filterApproved()"><mat-icon>check_box</mat-icon>Ver solo aprobados</button>
     </mat-grid-tile>
     <mat-grid-tile>
-      <button mat-button color="accent" class="shadow-btn-background"><mat-icon>visibility</mat-icon>Ver todas</button>
+      <button mat-button color="accent" class="shadow-btn-background" [class.active]="selectedButton === 'all'" (click)="filterAll()"><mat-icon>visibility</mat-icon>Ver todas</button>
     </mat-grid-tile>
     <mat-grid-tile>
-      <button mat-button color="accent" class="shadow-btn-background"><mat-icon>cancel</mat-icon>Ver solo desaprobados</button>
+      <button mat-button color="accent" class="shadow-btn-background" [class.active]="selectedButton === 'failed'" (click)="filterFailed()"><mat-icon>cancel</mat-icon>Ver solo desaprobados</button>
     </mat-grid-tile>
   </mat-grid-list>
 
@@ -18,21 +18,22 @@
       <th mat-header-cell *matHeaderCellDef class="font-white"> No. </th>
       <td mat-cell *matCellDef="let element" class="font-white"> {{ element.id }} </td>
     </ng-container>
-
+  
     <!-- Student Name Column -->
     <ng-container matColumnDef="studentName">
       <th mat-header-cell *matHeaderCellDef class="font-white"> Alumno </th>
       <td mat-cell *matCellDef="let element" class="font-white"> {{ element.studentName }} </td>
     </ng-container>
-
+  
     <!-- Asignature Columns -->
     <ng-container *ngFor="let column of displayedColumns.slice(2)" [matColumnDef]="column">
       <th mat-header-cell *matHeaderCellDef class="font-white"> {{ column }} </th>
       <td mat-cell *matCellDef="let element" class="font-white"> {{ element[column] }} </td>
     </ng-container>
-
+  
     <!-- Define the columns to display -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  
 </div>
