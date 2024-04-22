@@ -53,16 +53,19 @@ export class QualificationsComponent implements OnInit {
     return Math.floor(Math.random() * 11); 
   }
   
-  getCellStyle(grade: number | string): { [key: string]: string } {
-    let color: string;
-    if (typeof grade === 'string') {
-      return {};
-    } else if (grade >= 0 && grade < 6) {
-      color = 'red';
-    } else {
-      color = 'green';
-    }
-    return { 'color': color };
-  }
+
+
+  
+  // getCellStyle(grade: number | string): { [key: string]: string } {
+  //   let color: string;
+  //   if (typeof grade === 'string') {
+  //     return {};
+  //   } else if (grade >= 0 && grade < 6) {
+  //     color = 'red';
+  //   } else {
+  //     color = 'green';
+  //   }
+  //   return { 'color': color };
+  // }
 }
 
