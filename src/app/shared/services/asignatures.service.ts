@@ -11,7 +11,14 @@ export class AsignaturesService {
 
   constructor() { }
 
-  setAsignatures(asignatures: IAsignatures[]): void {
-    this.asignaturesSubject.next(asignatures);
+  setAsignatures(asignatures: IAsignatures[]): Promise<void> {
+    return new Promise((resolve, reject) => {
+      try {
+        this.asignaturesSubject.next(asignatures);
+        resolve(); 
+      } catch (error) {
+        reject(error);
+      }
+    });
   }
 }

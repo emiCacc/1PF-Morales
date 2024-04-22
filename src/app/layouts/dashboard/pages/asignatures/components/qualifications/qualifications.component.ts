@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AsignaturesService } from 'src/app/shared/services/asignatures.service';
 import { IAsignatures } from '../../models/asignatures_iface';
 import { IStudents } from '../../../students/models/students_iface';
 import { StudentsService } from 'src/app/shared/services/students.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-qualifications',
@@ -10,24 +11,48 @@ import { StudentsService } from 'src/app/shared/services/students.service';
   styleUrls: ['./qualifications.component.scss']
 })
 
-export class QualificationsComponent implements OnInit {
+export class QualificationsComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [];
   dataSource: any[] = [];
   students: IStudents[] = [];
   asignatures: IAsignatures[] = [];
+  asignaturesSubscription!: Subscription;
+  studentsSubscription!: Subscription;
 
   constructor(private asignaturesService: AsignaturesService,
               private studentsService: StudentsService) {}
 
   ngOnInit(): void {
-    this.asignaturesService.asignatures$.subscribe(asignatures => {
+    // Suscribirse al servicio de asignaturas y estudiantes
+    this.asignaturesSubscription = this.asignaturesService.asignatures$.subscribe(asignatures => {
       this.asignatures = asignatures;
       this.updateDisplayedColumns();
     });
-    this.studentsService.students$.subscribe(students => {
+
+    this.studentsSubscription = this.studentsService.students$.subscribe(students => {
       this.students = students;
       this.updateDataSource();
     });
+
+    // Llamar a la función para cargar asignaturas
+    this.loadAsignatures();
+  }
+
+  ngOnDestroy(): void {
+    // Desuscribirse al destruir el componente para evitar posibles fugas de memoria
+    this.asignaturesSubscription.unsubscribe();
+    this.studentsSubscription.unsubscribe();
+  }
+
+  private loadAsignatures(): void {
+    // Llamar al servicio para cargar las asignaturas y manejar la Promise
+    this.asignaturesService.setAsignatures(this.asignatures)
+      .then(() => {
+        console.log('Asignaturas cargadas con éxito');
+      })
+      .catch(error => {
+        console.error('Error al cargar asignaturas:', error);
+      });
   }
 
   private updateDisplayedColumns(): void {
@@ -52,20 +77,4 @@ export class QualificationsComponent implements OnInit {
   private getGradeForStudentAndAsignature(studentId: number, asignatureId: number): number | undefined {
     return Math.floor(Math.random() * 11); 
   }
-  
-
-
-  
-  // getCellStyle(grade: number | string): { [key: string]: string } {
-  //   let color: string;
-  //   if (typeof grade === 'string') {
-  //     return {};
-  //   } else if (grade >= 0 && grade < 6) {
-  //     color = 'red';
-  //   } else {
-  //     color = 'green';
-  //   }
-  //   return { 'color': color };
-  // }
 }
-
