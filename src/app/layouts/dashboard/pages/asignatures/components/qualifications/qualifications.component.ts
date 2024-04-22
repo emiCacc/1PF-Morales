@@ -20,11 +20,11 @@ export class QualificationsComponent implements OnInit, OnDestroy {
   dataSource: IRowData[] = [];
   originalDataSource: IRowData[] = [];
   selectedButton: 'all' | 'approved' | 'failed' | null = 'all';
-  public asignatures$: Observable<IAsignatures[]>;
+  asignatures$: Observable<IAsignatures[]> = this.asignaturesService.asignatures$;
+
 
   constructor(public asignaturesService: AsignaturesService,
               public studentsService: StudentsService) {
-                this.asignatures$ = asignaturesService.asignatures$;
               }
 
   ngOnInit(): void {
