@@ -2,16 +2,16 @@
     <!-- SIDEBAR -->
     <mat-drawer #drawer [opened]="false" class="shadow-btn-background" [mode]="isMobile() ? 'over' : 'side'">
         <mat-list>
-          <a mat-list-item (click)="selectComponent('students')" class="sidebar-block">
+          <a routerLink="students" routerLinkActive="router-link-active"  mat-list-item class="sidebar-block">
             <mat-icon matListIcon color="accent">school</mat-icon><span class="sidebar-item">Alumnos</span>
           </a>
-          <a mat-list-item (click)="selectComponent('teachers')" class="sidebar-block">
+          <a routerLink="teachers" mat-list-item class="sidebar-block">
             <mat-icon matListIcon color="accent">person</mat-icon><span class="sidebar-item">Profesores</span>
           </a>
-          <a mat-list-item (click)="selectComponent('asignatures'); showQualifications()" class="sidebar-block">
+          <a routerLink="asignatures" (click)="selectComponent('asignatures'); showQualifications()" mat-list-item class="sidebar-block">
             <mat-icon matListIcon color="accent">book</mat-icon><span class="sidebar-item">Materias</span>
           </a>
-          <a *ngIf="qualifications" (click)="selectComponent('qualifications')" mat-list-item class="sidebar-block">
+          <a routerLink="qualifications" *ngIf="qualifications" (click)="selectComponent('qualifications')" mat-list-item class="sidebar-block">
             <mat-icon matListIcon color="accent">checklist</mat-icon><span class="sidebar-item">Calificaciones</span>
           </a>
         </mat-list>      
@@ -35,10 +35,8 @@
       </mat-toolbar>
 
       <main style="padding: 1rem">
-        <app-students *ngIf="selectedComponent === 'students'" />
-        <app-asignatures *ngIf="selectedComponent === 'asignatures'" />
-        <app-teachers *ngIf="selectedComponent === 'teachers'" />
-        <app-qualifications *ngIf="selectedComponent === 'qualifications'" />
+        <app-qualifications *ngIf="selectedComponent === 'qualifications'" /> 
+        <router-outlet />
       </main>
     </div>
   </mat-drawer-container>
