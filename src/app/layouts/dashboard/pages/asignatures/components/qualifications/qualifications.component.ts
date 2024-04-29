@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AsignaturesService } from 'src/app/shared/services/asignatures.service';
+import { AsignaturesService } from 'src/app/core/services/asignatures.service';
 import { IAsignatures } from '../../models/asignatures_iface';
 import { IRowData } from '../../models/rowData_iface';
 import { IStudents } from '../../../students/models/students_iface';
-import { StudentsService } from 'src/app/shared/services/students.service';
+import { StudentsService } from 'src/app/core/services/students.service';
 import { Observable, Subscription, combineLatest, map, tap } from 'rxjs';
 @Component({
   selector: 'app-qualifications',
