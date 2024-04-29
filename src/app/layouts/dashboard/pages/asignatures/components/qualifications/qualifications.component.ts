@@ -22,10 +22,8 @@ export class QualificationsComponent implements OnInit, OnDestroy {
   selectedButton: 'all' | 'approved' | 'failed' | null = 'all';
   asignatures$: Observable<IAsignatures[]> = this.asignaturesService.asignatures$;
 
-
   constructor(public asignaturesService: AsignaturesService,
-              public studentsService: StudentsService) {
-              }
+              public studentsService: StudentsService) {}
 
   ngOnInit(): void {
     this.asignaturesSubscription = this.asignaturesService.asignatures$.subscribe(asignatures => {
@@ -52,7 +50,7 @@ export class QualificationsComponent implements OnInit, OnDestroy {
         console.log('Asignaturas cargadas con éxito');
       })
       .catch(error => {
-        console.error('Error al cargar asignaturas:', error);
+          console.error('Error al cargar asignaturas:', error);
       });
   }
 
