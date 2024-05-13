@@ -13,14 +13,14 @@ ngOnInit(){
 }
 
 noRCandDT() {
-  document.addEventListener('contextmenu', (event) => {
-    event.preventDefault();
-  });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'F12' || (event.metaKey && event.key === 'i')) {
-      event.preventDefault();
-    }
-  });
+  // document.addEventListener('contextmenu', (event) => {
+  //   event.preventDefault();
+  // });
+  // document.addEventListener('keydown', (event) => {
+  //   if (event.key === 'F12' || (event.metaKey && event.key === 'i')) {
+  //     event.preventDefault();
+  //   }
+  // });
 }
 
 }
