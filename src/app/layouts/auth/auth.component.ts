@@ -1,33 +1,46 @@
-// auth.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent {
-  email: string = '';
-  password: string = '';
+export class AuthComponent implements OnInit {
+  loginForm: FormGroup;
   error: string | null = null;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder
+  ) {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  ngOnInit(): void {
+  }
 
   login(): void {
-    this.authService.login(this.email, this.password).subscribe(
-      success => {
-        if (success) {
-          // Redirigir al usuario según su rol
-          if (this.authService.isAdmin()) {
-            // Redirigir al dashboard de administrador
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      this.authService.login(email, password).subscribe(
+        success => {
+          if (success) {
+            // Redirigir al usuario según su rol
+            if (this.authService.isAdmin()) {
+              // Redirigir al dashboard de administrador
+            } else {
+              // Redirigir al dashboard de estudiante
+            }
           } else {
-            // Redirigir al dashboard de estudiante
+            this.error = 'Credenciales inválidas';
           }
-        } else {
-          this.error = 'Credenciales inválidas';
         }
-      }
-    );
+      );
+    }
   }
 }
