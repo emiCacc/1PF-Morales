@@ -11,6 +11,8 @@ import { StudentsModule } from './pages/students/students.module';
 import { AsignaturesModule } from './pages/asignatures/asignatures.module';
 import { TeachersModule } from './pages/teachers/teachers.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { QualificationsModule } from './pages/asignatures/components/qualifications/qualifications.module';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     StudentsModule,
     AsignaturesModule,
     TeachersModule,
-    SharedModule
+    SharedModule,
+    QualificationsModule
   ],
   exports:[DashboardComponent],
 })
