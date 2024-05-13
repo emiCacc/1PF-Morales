@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, map, of } from 'rxjs';
 
 interface User {
   email: string;
@@ -13,14 +13,11 @@ const STORAGE_KEY = 'auth-user';
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUser: User | null = null;
-
-  constructor() {
-    const storedUser = localStorage.getItem(STORAGE_KEY);
-    if (storedUser) {
-      this.currentUser = JSON.parse(storedUser);
-    }
-  }
+  private actualUserSubject: BehaviorSubject<User | null> = new BehaviorSubject<User|null>(null);
+  actualUser$: Observable<User|null> = this.actualUserSubject.asObservable();
+  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
+  constructor() {}
 
   login(email: string, password: string): Observable<boolean> {
     const users: User[] = [
@@ -30,7 +27,8 @@ export class AuthService {
  
     const user = users.find(u => u.email === email && u.password === password);
     if (user) {
-      this.currentUser = user;
+      this.actualUserSubject.next(user);
+      this.isLoggedInSubject.next(true);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
       return of(true);
     } else {
@@ -39,15 +37,15 @@ export class AuthService {
   }
   
   logout(): void {
-    this.currentUser = null;
+    this.actualUserSubject.next(null);
     localStorage.removeItem(STORAGE_KEY);
   }
 
   isLoggedIn(): boolean {
-    return !!this.currentUser;
+    return !!this.actualUserSubject;
   }
 
-  isAdmin(): boolean {
-    return this.currentUser?.role === 'admin';
+  isAdmin(): Observable<boolean> {
+    return this.actualUserSubject.pipe(map(user => user?.role === 'admin'));
   }
 }

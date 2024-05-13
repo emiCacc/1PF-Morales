@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service';
+import { AuthService } from '../../layouts/core/services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -13,7 +14,8 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -30,12 +32,7 @@ export class AuthComponent implements OnInit {
       this.authService.login(email, password).subscribe(
         success => {
           if (success) {
-            // Redirigir al usuario según su rol
-            if (this.authService.isAdmin()) {
-              // Redirigir al dashboard de administrador
-            } else {
-              // Redirigir al dashboard de estudiante
-            }
+            this.router.navigate(['dashboard']);             
           } else {
             this.error = 'Credenciales inválidas';
           }
