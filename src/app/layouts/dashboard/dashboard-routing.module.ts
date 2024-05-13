@@ -4,10 +4,6 @@ import { DashboardComponent } from './dashboard.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: DashboardComponent,
-  },    
-  {
     path: 'students',
     loadChildren: () =>
       import('./pages/students/students.module').then((m) => m.StudentsModule),
