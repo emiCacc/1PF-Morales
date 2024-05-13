@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, map, of } from 'rxjs';
 
 interface User {
@@ -17,7 +18,8 @@ export class AuthService {
   actualUser$: Observable<User|null> = this.actualUserSubject.asObservable();
   private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
-  constructor() {
+
+  constructor(private router: Router) {
     const storedUser = localStorage.getItem(STORAGE_KEY);
     if (storedUser) {
       const user: User = JSON.parse(storedUser);
@@ -47,6 +49,7 @@ export class AuthService {
     this.actualUserSubject.next(null);
     this.isLoggedInSubject.next(false);
     localStorage.removeItem(STORAGE_KEY);
+    this.router.navigate(['/login']);
   }
 
   isLoggedIn(): boolean {
