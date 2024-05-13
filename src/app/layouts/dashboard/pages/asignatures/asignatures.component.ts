@@ -3,7 +3,7 @@ import { IAsignatures } from './models/asignatures_iface';
 import { MatDialog } from '@angular/material/dialog';
 import { AsignaturesDialogComponent } from './components/asignatures-dialog/asignatures-dialog.component';
 import Swal from 'sweetalert2';
-import { AsignaturesService } from 'src/app/shared/services/asignatures.service';
+import { AsignaturesService } from 'src/app/layouts/core/services/asignatures.service';
 
 @Component({
   selector: 'app-asignatures',

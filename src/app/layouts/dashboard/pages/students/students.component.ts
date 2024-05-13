@@ -3,7 +3,7 @@ import { IStudents } from './models/students_iface';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 import Swal from 'sweetalert2';
-import { StudentsService } from 'src/app/shared/services/students.service';
+import { StudentsService } from 'src/app/layouts/core/services/students.service';
 
 @Component({
   selector: 'app-students',
