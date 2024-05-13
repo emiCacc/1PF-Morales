@@ -9,6 +9,4 @@ let router = inject(Router);
 
 return authService.isLoggedIn$.pipe(
   map((isLogged) => !isLogged ? router.parseUrl('/login') : true))
-
-
 };

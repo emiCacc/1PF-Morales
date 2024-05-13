@@ -29,7 +29,7 @@ export class AuthService {
     if (user) {
       this.actualUserSubject.next(user);
       this.isLoggedInSubject.next(true);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+      localStorage.setItem('userLogged', 'true');
       return of(true);
     } else {
       return of(false);
@@ -38,7 +38,7 @@ export class AuthService {
   
   logout(): void {
     this.actualUserSubject.next(null);
-    localStorage.removeItem(STORAGE_KEY);
+    this.isLoggedInSubject.next(false);
   }
 
   isLoggedIn(): boolean {

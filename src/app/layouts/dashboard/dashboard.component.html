@@ -14,7 +14,10 @@
           <a routerLink="qualifications" *ngIf="qualifications" (click)="selectComponent('qualifications')" mat-list-item class="sidebar-block">
             <mat-icon matListIcon color="accent">checklist</mat-icon><span class="sidebar-item">Calificaciones</span>
           </a>
-        </mat-list>      
+        </mat-list>  
+        <a (click)="logout()" mat-list-item class="sidebar-block">
+          <mat-icon matListIcon color="accent">book</mat-icon><span class="sidebar-item">Cerrar sesion</span>
+        </a>
         <div class="sidebar-footer">
           <span mat-list-item class="byMe"  
             #tooltip="matTooltip"

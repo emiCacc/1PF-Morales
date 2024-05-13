@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ElementRef, Renderer2 } from '@angular/core';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +13,7 @@ export class DashboardComponent {
   qualifications = false;
 
   constructor(
-    private elementRef: ElementRef,
-    private renderer: Renderer2
+    private authService: AuthService
   ) {}
 
   ngAfterViewChecked() {
@@ -41,6 +41,10 @@ isMobile(): boolean {
 
 showQualifications(): void {
   this.qualifications = true;
+}
+
+logout() {
+  this.authService.logout();
 }
 
 }
