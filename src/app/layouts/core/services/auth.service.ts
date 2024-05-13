@@ -17,7 +17,14 @@ export class AuthService {
   actualUser$: Observable<User|null> = this.actualUserSubject.asObservable();
   private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
-  constructor() {}
+  constructor() {
+    const storedUser = localStorage.getItem(STORAGE_KEY);
+    if (storedUser) {
+      const user: User = JSON.parse(storedUser);
+      this.actualUserSubject.next(user);
+      this.isLoggedInSubject.next(true);
+    }
+  }
 
   login(email: string, password: string): Observable<boolean> {
     const users: User[] = [
@@ -29,7 +36,7 @@ export class AuthService {
     if (user) {
       this.actualUserSubject.next(user);
       this.isLoggedInSubject.next(true);
-      localStorage.setItem('userLogged', 'true');
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
       return of(true);
     } else {
       return of(false);
@@ -39,10 +46,11 @@ export class AuthService {
   logout(): void {
     this.actualUserSubject.next(null);
     this.isLoggedInSubject.next(false);
+    localStorage.removeItem(STORAGE_KEY);
   }
 
   isLoggedIn(): boolean {
-    return !!this.actualUserSubject;
+    return !!this.actualUserSubject.getValue();
   }
 
   isAdmin(): Observable<boolean> {
