@@ -1,15 +1,15 @@
 <div class="container">
   <div class="dark-shadow-background mat-elevation-z2">
-    <h2 class="mat-h2">Iniciar sesión</h2>
+    <h2 class="mat-h2">Inicie sesión por favor</h2>
     <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
-      <mat-form-field appearance="outline" class="full-width white-border">
+      <mat-form-field appearance="outline" class="full-width font-input">
         <mat-label>Email</mat-label>
         <input matInput placeholder="Email" formControlName="email" required class="white-text-input">
         <mat-error *ngIf="loginForm.controls?.['email']?.errors?.['required']">El email es requerido</mat-error>
         <mat-error *ngIf="loginForm.controls?.['email']?.errors?.['email']">El email es inválido</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width white-border">
+      <mat-form-field appearance="outline" class="full-width font-input">
         <mat-label>Contraseña</mat-label>
         <input matInput type="password" placeholder="Contraseña" formControlName="password" required class="white-text-input">
         <mat-error *ngIf="loginForm.controls?.['password']?.errors?.['required']">La contraseña es requerida</mat-error>

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 import Swal from 'sweetalert2';
 import { StudentsService } from 'src/app/layouts/core/services/students.service';
+import { AuthService, User } from 'src/app/layouts/core/services/auth.service';
 
 @Component({
   selector: 'app-students',
@@ -32,8 +33,11 @@ export class StudentsComponent implements OnInit{
       { id: 12, firstName: 'Padma', lastName: 'Patil', email: 'seamus_finnigan@gmail.com', house:'Ravenclaw', createdAt: new Date() },
   ];
 
+  isAdmin: boolean = false;
+
   constructor(private matDialog: MatDialog,
-              private studentsService: StudentsService) {}
+              private studentsService: StudentsService,
+              private authService: AuthService) {}
 
   openDialog(editingUser?: IStudents): void {
     this.matDialog
@@ -116,6 +120,13 @@ export class StudentsComponent implements OnInit{
 
   ngOnInit(): void {
     this.sendUsersToQualifications();
+    this.authService.actualUser$.subscribe((user: User | null) => {
+      if (user) {
+        this.isAdmin = user.role === 'admin'; 
+      } else {
+        this.isAdmin = false; 
+      }
+    });
   }
 
   sendUsersToQualifications(): void {

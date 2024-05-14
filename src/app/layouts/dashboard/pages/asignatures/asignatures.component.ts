@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AsignaturesDialogComponent } from './components/asignatures-dialog/asignatures-dialog.component';
 import Swal from 'sweetalert2';
 import { AsignaturesService } from 'src/app/layouts/core/services/asignatures.service';
+import { AuthService, User } from 'src/app/layouts/core/services/auth.service';
 
 @Component({
   selector: 'app-asignatures',
@@ -25,8 +26,11 @@ export class AsignaturesComponent implements OnInit{
     { id: 8, asignature: 'Pociones', asignatureType: 'Obligatoria', enrolled: '25', professor: 'Horace Slughorn' },
 ];
 
+isAdmin: boolean = false;
+
 constructor( private matDialog: MatDialog,
-             private asignaturesService: AsignaturesService ) {}
+             private asignaturesService: AsignaturesService,
+             private authService: AuthService ) {}
 
 openDialog(editingAsignature?: IAsignatures): void {
   this.matDialog
@@ -102,6 +106,13 @@ onDeleteAsignature(id: number): void {
 
 ngOnInit(): void {
   this.sendAsignaturesToQualifications();
+  this.authService.actualUser$.subscribe((user: User | null) => {
+    if (user) {
+      this.isAdmin = user.role === 'admin'; 
+    } else {
+      this.isAdmin = false; 
+    }
+  });
 }
 
 sendAsignaturesToQualifications(): void {

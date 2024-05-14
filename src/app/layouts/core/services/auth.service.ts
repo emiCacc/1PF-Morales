@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, map, of } from 'rxjs';
 
-interface User {
+export interface User {
   email: string;
   password: string;
   role: 'admin' | 'student';
@@ -31,7 +31,8 @@ export class AuthService {
   login(email: string, password: string): Observable<boolean> {
     const users: User[] = [
       { email: 'admin@example.com', password: 'admin', role: 'admin' },
-      { email: 'student@example.com', password: 'student', role: 'student' }
+      { email: 'student@example.com', password: 'student', role: 'student' },
+      { email: 'emi', password: '1234', role: 'admin' }
     ];
  
     const user = users.find(u => u.email === email && u.password === password);

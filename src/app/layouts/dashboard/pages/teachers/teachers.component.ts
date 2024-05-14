@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ITeachers } from './models/teachers_iface';
 import { MatDialog } from '@angular/material/dialog';
 import { TeachersDialogComponent } from './components/teachers-dialog/teachers-dialog.component';
 import Swal from 'sweetalert2';
+import { AuthService, User } from 'src/app/layouts/core/services/auth.service';
 
 @Component({
   selector: 'app-teachers',
   templateUrl: './teachers.component.html',
   styleUrls: ['./teachers.component.scss']
 })
-export class TeachersComponent {
+export class TeachersComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'lastName', 'age', 'actions'];
 
   teachers: ITeachers[] = [ 
@@ -23,7 +24,20 @@ export class TeachersComponent {
     { id: 8, name: 'Horace', lastName: 'Slughorn', age:'74 años' },
 ];
 
-constructor(private matDialog: MatDialog) {}
+isAdmin: boolean = false;
+
+constructor(private matDialog: MatDialog,
+  private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.authService.actualUser$.subscribe((user: User | null) => {
+      if (user) {
+        this.isAdmin = user.role === 'admin'; 
+      } else {
+        this.isAdmin = false; 
+      }
+    });
+  }
 
 openDialog(editingTeacher?: ITeachers): void {
   this.matDialog
