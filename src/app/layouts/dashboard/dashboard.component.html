@@ -30,11 +30,19 @@
   
     <!-- TOOLBAR -->
     <div class="row">
-      <mat-toolbar color="primary" class="shadow-btn-background row">
-        <button (click)="drawer.toggle()" mat-icon-button>
-          <mat-icon color="accent">menu</mat-icon>
-          <span class="font-harry">Colegio Hogwarts de Magia y Hechicería</span>
-        </button>
+      <mat-toolbar color="primary" class="shadow-btn-background">
+            <button (click)="drawer.toggle()" mat-icon-button>
+              <mat-icon color="accent">menu</mat-icon>
+              <span class="font-harry">Colegio Hogwarts de Magia y Hechicería</span>
+            </button>
+            <span class="example-spacer"></span>
+            
+            <label class="font-harry" *ngIf="isAdmin$ | async; else studentWelcome">
+              Bienvenido: Admin
+            </label>
+            <ng-template #studentWelcome>
+                <span class="font-harry" color="accent">Bienvenido: Alumno</span>
+            </ng-template>
       </mat-toolbar>
 
       <main style="padding: 1rem">

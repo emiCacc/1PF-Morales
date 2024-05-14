@@ -8,6 +8,7 @@ import { AuthService } from '../core/services/auth.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  isAdmin$ = this.authService.isAdmin();
   selectedComponent: string = 'students';
   showFiller = false;
   qualifications = false;
