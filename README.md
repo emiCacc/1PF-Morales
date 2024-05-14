@@ -12,10 +12,10 @@ Podría ser necesario ejecutar 'npm i' para instalar dependencias y librerias us
 ## Actualización Tercera entrega:
 Credenciales de acceso:
 
-• Rol Administrador
+• Rol Administrador =>
 email: admin@example.com
 contraseña: admin
 
-• Rol Alumno
+• Rol Alumno =>
 email: student@example.com
 contraseña: student
