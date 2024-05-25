@@ -1,0 +1,208 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "firstName": "Harry",
+      "lastName": "Potter",
+      "email": "harry_potter@gmail.com",
+      "house": "Gryffindor",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "2",
+      "firstName": "Hermione",
+      "lastName": "Granger",
+      "email": "hermione_granger@gmail.com",
+      "house": "Gryffindor",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "3",
+      "firstName": "Ronald",
+      "lastName": "Weasley",
+      "email": "ron_wasley@gmail.com",
+      "house": "Gryffindor",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "4",
+      "firstName": "Draco",
+      "lastName": "Malfoy",
+      "email": "draco_malfoy@gmail.com",
+      "house": "Slytherin",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "5",
+      "firstName": "Vincent",
+      "lastName": "Crabbe",
+      "email": "vincent_crabbe@gmail.com",
+      "house": "Slytherin",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "6",
+      "firstName": "Gregory",
+      "lastName": "Goyle",
+      "email": "gregory_goyle@gmail.com",
+      "house": "Slytherin",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "7",
+      "firstName": "Cedric",
+      "lastName": "Diggory",
+      "email": "cedric_diggory@gmail.com",
+      "house": "Hufflepuff",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "8",
+      "firstName": "Hannah",
+      "lastName": "Abbott",
+      "email": "hannah_abbott@gmail.com",
+      "house": "Hufflepuff",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "9",
+      "firstName": "Artemisa",
+      "lastName": "Lufkin",
+      "email": "lartemisia@yahoo.com",
+      "house": "Hufflepuff",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "10",
+      "firstName": "Luna",
+      "lastName": "Lovegood",
+      "email": "seamus_finnigan@gmail.com",
+      "house": "Ravenclaw",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "11",
+      "firstName": "Cho",
+      "lastName": "Chang",
+      "email": "seamus_finnigan@gmail.com",
+      "house": "Ravenclaw",
+      "createdAt": "new Date()"
+    },
+    {
+      "id": "12",
+      "firstName": "Padma",
+      "lastName": "Patil",
+      "email": "seamus_finnigan@gmail.com",
+      "house": "Ravenclaw",
+      "createdAt": "new Date()"
+    }
+  ],
+  "asignatures": [
+    {
+      "id": "1",
+      "asignature": "Historia de la Magia",
+      "asignatureType": "Obligatoria",
+      "enrolled": "25",
+      "professor": "Cuthbert Binns"
+    },
+    {
+      "id": "2",
+      "asignature": "Defensa contra las artes oscuras",
+      "asignatureType": "Obligatoria",
+      "enrolled": "25",
+      "professor": "Severus Snape"
+    },
+    {
+      "id": "3",
+      "asignature": "Encantamientos",
+      "asignatureType": "Obligatoria",
+      "enrolled": "25",
+      "professor": "Filius Flitwick"
+    },
+    {
+      "id": "4",
+      "asignature": "Quidditch",
+      "asignatureType": "Opcional",
+      "enrolled": "25",
+      "professor": "Rolanda Hooch"
+    },
+    {
+      "id": "5",
+      "asignature": "Cuidado de Criaturas Mágicas",
+      "asignatureType": "Opcional",
+      "enrolled": "25",
+      "professor": "Rubeus Hagrid"
+    },
+    {
+      "id": "6",
+      "asignature": "Estudios Avanzados Aritmancia",
+      "asignatureType": "Opcional",
+      "enrolled": "25",
+      "professor": "Septima Vector"
+    },
+    {
+      "id": "7",
+      "asignature": "Adivinacion",
+      "asignatureType": "Obligatoria",
+      "enrolled": "25",
+      "professor": "Sybill Trelawney"
+    },
+    {
+      "id": "8",
+      "asignature": "Pociones",
+      "asignatureType": "Obligatoria",
+      "enrolled": "25",
+      "professor": "Horace Slughorn"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "1",
+      "name": "Cuthbert",
+      "lastName": "Binns",
+      "age": "75 años"
+    },
+    {
+      "id": "2",
+      "name": "Severus",
+      "lastName": "Snape",
+      "age": "69 años"
+    },
+    {
+      "id": "3",
+      "name": "Filius",
+      "lastName": "Flitwick",
+      "age": "67 años"
+    },
+    {
+      "id": "4",
+      "name": "Rolanda",
+      "lastName": "Hooch",
+      "age": "51 años"
+    },
+    {
+      "id": "5",
+      "name": "Rubeus",
+      "lastName": "Hagrid",
+      "age": "89 años"
+    },
+    {
+      "id": "6",
+      "name": "Septima",
+      "lastName": "Vector",
+      "age": "42 años"
+    },
+    {
+      "id": "7",
+      "name": "Sybill",
+      "lastName": "Trelawney",
+      "age": "89 años"
+    },
+    {
+      "id": "8",
+      "name": "Horace",
+      "lastName": "Slughorn",
+      "age": "74 años"
+    }
+  ]
+}
