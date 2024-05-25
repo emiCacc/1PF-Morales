@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 import { IStudents } from 'src/app/layouts/dashboard/pages/students/models/students_iface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class StudentsService {
   }
 
   getStudents(): Observable<IStudents[]> {
-    return this.httpClient.get<IStudents[]>('http://localhost:3000/students');
+    return this.httpClient.get<IStudents[]>(environment.baseAPIURL + '/students');
   }
 
   setAsignatures(students: IStudents[]): void {
