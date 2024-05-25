@@ -22,7 +22,7 @@ export class StudentsService {
     this.studentsSubject.next(students);
   }
 
-  createUser(payload: CreateStudentPayload): Observable<IStudents> {
+  createStudent(payload: CreateStudentPayload): Observable<IStudents> {
     return this.httpClient.post<IStudents>(
       `${environment.baseAPIURL}/students`, payload
     );

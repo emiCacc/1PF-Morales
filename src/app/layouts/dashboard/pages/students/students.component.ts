@@ -56,7 +56,7 @@ export class StudentsComponent implements OnInit{
               }
             } else {
               //result.id = new Date().getTime().toString().substring(0, 2);
-              this.studentsService.createUser(result).subscribe({
+              this.studentsService.createStudent(result).subscribe({
                 next: (createdStudent) => {
                   const newStudent: IStudents = {
                     id: createdStudent.id,
