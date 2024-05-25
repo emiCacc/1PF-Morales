@@ -6,6 +6,7 @@ import { IStudents } from '../../layouts/dashboard/pages/students/models/student
 })
 export class FullnamePipe implements PipeTransform {
   transform(student: IStudents): string {
-    return `${student.firstName} ${student.lastName}`;
+    const { firstName, lastName } = student;
+    return `${firstName || ''} ${lastName || ''}`.trim();
   }
 }

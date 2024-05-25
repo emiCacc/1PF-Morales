@@ -74,6 +74,7 @@ onSave(): void{
   if(this.studentsForm.invalid){ // Invalid form
     this.studentsForm.markAllAsTouched();
   }else{ // Valid form
+    console.log('Result from dialog:', this.studentsForm.value);
     this.matDialogRef.close(this.studentsForm.value);
   }
 }

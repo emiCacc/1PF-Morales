@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
-import { IStudents } from 'src/app/layouts/dashboard/pages/students/models/students_iface';
+import { CreateStudentPayload, IStudents } from 'src/app/layouts/dashboard/pages/students/models/students_iface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -20,5 +20,11 @@ export class StudentsService {
 
   setAsignatures(students: IStudents[]): void {
     this.studentsSubject.next(students);
+  }
+
+  createUser(payload: CreateStudentPayload): Observable<IStudents> {
+    return this.httpClient.post<IStudents>(
+      `${environment.baseAPIURL}/students`, payload
+    );
   }
 }

@@ -55,9 +55,20 @@ export class StudentsComponent implements OnInit{
                 });
               }
             } else {
-              result.id = new Date().getTime().toString().substring(0, 2);
-              result.createdAt = new Date();
-              this.students = [...this.students, result];
+              //result.id = new Date().getTime().toString().substring(0, 2);
+              this.studentsService.createUser(result).subscribe({
+                next: (createdStudent) => {
+                  const newStudent: IStudents = {
+                    id: createdStudent.id,
+                    firstName: result.firstName,
+                    lastName: result.lastName,
+                    email: result.email,
+                    house: result.house,
+                    createdAt: new Date().toISOString(),
+                  };
+                  this.students = [...this.students, newStudent];
+                },
+              });
               Swal.fire({
                 title: '¡Realizado!',
                 text: '¡Alumno agregado con éxito!',
@@ -127,9 +138,13 @@ export class StudentsComponent implements OnInit{
   }
 
   convertToDate(dateString: string): Date {
-    const date = new Date(dateString.slice(9, -2));
+    if (!dateString) {
+      return new Date(); 
+    }
+    const date = new Date(dateString);
     return isNaN(date.getTime()) ? new Date() : date;
   }
+  
   
   
   }
