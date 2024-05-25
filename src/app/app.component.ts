@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'pf1-morales';
+  title = 'pf1-morales'; 
+  
+  constructor() {
+    if(!environment.isProd){
+      console.log(environment);
+    }
+  }
 
 ngOnInit(){
   this.noRCandDT();
