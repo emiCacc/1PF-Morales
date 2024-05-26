@@ -103,15 +103,18 @@ export class StudentsComponent implements OnInit{
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.students = this.students.filter((u) => u.id !== id);  
-        Swal.fire({
-          title: '¡Realizado!',
-          text: 'Alumno eliminado con éxito.',
-          icon: 'success'
+        this.studentsService.deleteStudent(id).subscribe(() => {
+          this.students = this.students.filter((u) => u.id !== id);  
+          Swal.fire({
+            title: '¡Realizado!',
+            text: 'Alumno eliminado con éxito.',
+            icon: 'success'
+          });
         });
       }
     });
   }
+  
 
   ngOnInit(): void {
     this.studentsService.getStudents().subscribe(

@@ -27,4 +27,11 @@ export class StudentsService {
       `${environment.baseAPIURL}/students`, payload
     );
   }
+
+  deleteStudent(id: number): Observable<any> {
+    return this.httpClient.delete(
+      `${environment.baseAPIURL}/students/${id}`
+    );
+  }
+  
 }
