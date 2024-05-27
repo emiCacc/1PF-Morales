@@ -29,15 +29,16 @@ export class QualificationsComponent implements OnInit, OnDestroy {
     this.asignaturesSubscription = this.asignaturesService.asignatures$.subscribe(asignatures => {
       this.asignatures = asignatures;
       this.updateDisplayedColumns();
-    });
   
-    this.studentsSubscription = this.studentsService.students$.subscribe(students => {
-      this.students = students;
-      this.updateDataSource();
+      this.studentsSubscription = this.studentsService.students$.subscribe(students => {
+        this.students = students;
+        this.updateDataSource();
+      });
     });
-  
+    
     this.loadAsignatures();
   }
+
 
   ngOnDestroy(): void {
     this.asignaturesSubscription.unsubscribe();
